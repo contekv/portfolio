@@ -1,0 +1,8 @@
+<%= form_with url:"#" do |f| %>
+      <div class="test-user">
+        <i class="fas fa-user"></i>
+        <%= f.hidden_field :email, value: "test@example.com" %>
+        <%= f.hidden_field :password, value: "123456" %>
+        <%= f.submit 'テストログイン', class: "btn btn-lg btn-primary" %>
+      </div>
+<% end %>
