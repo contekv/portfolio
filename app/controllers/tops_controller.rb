@@ -1,5 +1,6 @@
 class TopsController < ApplicationController
   def home
+    @display = true
   end
 
   def help
