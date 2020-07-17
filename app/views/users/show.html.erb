@@ -1,0 +1,12 @@
+<%provide(:title,"HOME" )%>
+<h1>(<%=@user.name%>)</h1>
+
+<%=link_to "Myドクター", "#"%>
+<%=link_to "注文", "#"%>
+<%=link_to "注文履歴", "#"%>
+<%=link_to "お薬手帳　登録", "#"%>
+<%=link_to "お薬手帳　参照", "#"%>
+<%=link_to "ログアウト",destroy_user_session_path, method: :delete%>
+<%=link_to "マニュアル", "#"%>
+　　
+
