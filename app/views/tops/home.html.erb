@@ -1,23 +1,16 @@
 <div class="center jumbotron">
   <h1>MediRoom</h1>
 
+  <p>医療をもっと身近に オンラインで医療とつながる時代へ</p>
 
-  <p>
-  医療をもっと身近に
-  オンラインで医療とつながる時代へ
-  </p>
-
-  
-
-  <%=link_to "アカウント新規作成", new_user_registration_path, class: "btn btn-lg btn-primary"%>
+  <%= link_to "アカウント新規作成", new_user_registration_path, class: "btn btn-lg btn-primary" %>
 
   <%= link_to 'テストログイン', users_guest_sign_in_path, method: :post %>
 
-  <%=link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-primary"%>
+  <%= link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-primary" %>
 
-  <%= link_to "ログアウト",  destroy_user_session_path,  method: :delete%>
+  <%= link_to "ログアウト",  destroy_user_session_path,  method: :delete %>
 
-  <%=link_to "パスワードを忘れた方はこちら", new_user_password_path, class: "btn btn-lg btn-primary"%>
+  <%= link_to "パスワードを忘れた方はこちら", new_user_password_path, class: "btn btn-lg btn-primary" %>
 
-
-  </div>
+</div>

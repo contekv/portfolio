@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <%=render 'layouts/head'%>
-<body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-  <%=render 'layouts/header' unless @display%>
-    <div class="container">
-    <%= yield %>
-    <%=render 'layouts/footer' unless @display%>
-    </div>
-</body>
+  <%= render 'layouts/head' %>
+    <body>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= render 'layouts/header' %>
+      <div class="container">
+        <%= yield %>
+        <%= render 'layouts/footer' %>
+      </div>
+    </body>
 </html>
