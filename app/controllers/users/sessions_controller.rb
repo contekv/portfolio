@@ -6,25 +6,6 @@ class Users::SessionsController < Devise::SessionsController
   def test_guest
     @user ||= User.find_by(email: "test@test.com")
     sign_in @user
-    redirect_to user_path(resource.id), notice: "お試し頂き、ありがとうございます!"
+    redirect_to user_path(resource), notice: "お試し頂き、ありがとうございます!"
   end
-  # GET /resource/sign_in
-  # def new
-  # super
-  # end
-
-  # POST /resource/sign_in
-  # def create
-  # super
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy; end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  # devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end

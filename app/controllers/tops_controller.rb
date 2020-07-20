@@ -1,14 +1,5 @@
 class TopsController < ApplicationController
   def home
-    @display = true
-  end
-
-  def help
-  end
-
-  def about
-  end
-
-  def contact
+    render layout: "second_layout"
   end
 end
