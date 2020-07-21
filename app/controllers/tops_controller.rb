@@ -1,5 +1,6 @@
 class TopsController < ApplicationController
+  layout 'devise'
+
   def home
-    render layout: "second_layout"
   end
 end
