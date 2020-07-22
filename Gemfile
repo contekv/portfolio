@@ -37,7 +37,7 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem "rubocop"
+  gem "rubocop-airbnb"
   gem "web-console", ">= 3.3.0"
   gem "listen", "~> 3.2"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -55,3 +55,10 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# ログイン機能
+gem "devise"
+
+# 日本語化
+gem "devise-i18n"
+gem "devise-i18n-views"
