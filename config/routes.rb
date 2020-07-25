@@ -5,17 +5,17 @@ Rails.application.routes.draw do
   get "help",     to: "tops#help"
   get "contact",  to: "tops#contact"
   resources :users
+  resources :messages
   resources :admins
   resources :orders
   resources :medicines, only: [:show, :index]
-  
   # ログイン、アカウント編集後、任意のページに推移させるための記述
   devise_for :users, skip: :all, controllers: {
     sessions: "users/sessions",
     registraions: "users/registraiotns",
-    passwords: "users/passwords",}
+    passwords: "users/passwords",  }
 
-    devise_scope :user do
+  devise_scope :user do
     get "login", to: "devise/sessions#new", as: :new_user_session
     post "login", to: "devise/sessions#create", as: :user_session
     delete "logout", to: "devise/sessions#destroy", as: :destroy_user_session
@@ -33,4 +33,4 @@ Rails.application.routes.draw do
     put "password", to: "devise/passwords#update", as: :update_user_password
     post "users/guest_sign_in", to: "users/sessions#test_guest"
   end
-end
+end  
