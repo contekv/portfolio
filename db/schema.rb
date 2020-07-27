@@ -1,4 +1,5 @@
 ActiveRecord::Schema.define(version: 2020_07_25_063324) do
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
