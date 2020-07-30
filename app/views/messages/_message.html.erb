@@ -1,5 +1,4 @@
-<p>
-<%= @user.name %>
-<%= @user.message.content %>
-<%= time_ago_in_words(message.created_at) %>
-</p>
+<h3>Message(<%= @user.messages.count %>)</h3>
+<% @user.messages.each do |msg| %>
+  <%= msg.content %>
+<% end %>

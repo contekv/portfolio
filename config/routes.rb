@@ -33,4 +33,4 @@ Rails.application.routes.draw do
     put "password", to: "devise/passwords#update", as: :update_user_password
     post "users/guest_sign_in", to: "users/sessions#test_guest"
   end
-end  
+end

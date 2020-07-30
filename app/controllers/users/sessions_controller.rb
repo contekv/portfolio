@@ -1,5 +1,4 @@
 class Users::SessionsController < Devise::SessionsController
-  
   def test_guest
     @user ||= User.find_by(email: "test@test.com")
     sign_in @user
