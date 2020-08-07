@@ -1,4 +1,17 @@
-<%= render 'form' %>
-<div id="messages">
-  <%= render @message %>
-</div>
+<h1>ユーザー詳細</h1>
+<h2><%= @user.name %></h2>
+
+<% if @user.id == current_user.id %>
+<% else %>
+  <% if @isRoom == true %>
+    <p><a href="/rooms/<%= @roomId %>">会話へ</a>
+  <% else %>
+    <%= render "form" %>
+  <% end %>
+<% end %>
+
+<% if current_user.admin? %>
+  <%= link_to "ユーザー一覧に戻る", messages_path %>
+<% else %>
+  <%= link_to "HOME", user_path %>
+<% end %>

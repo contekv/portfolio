@@ -1,0 +1,11 @@
+<h1>会話履歴</h1>
+
+<% @anotherEntries.each do |e| %>
+  <%= link_to room_path(e.room.id) do %>
+    <%= e.user.name %><br>
+  <% end %>
+
+  <% @messages.each do |msg|%>
+    <%= msg.content %>
+  <% end %>
+<% end %>

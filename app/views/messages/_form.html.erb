@@ -1,4 +1,6 @@
-<%= form_with model: @message, method: :post do |f| %>
-  <%= f.text_field :content %>
-  <%= f.submit '投稿' %>
+<%= form_with model: @room, method: :post do |f| %>
+  <%= fields_for @entry do |e| %>
+    <%= e.hidden_field :user_id, :value => @user.id %>
+  <% end %>
+  <%= f.submit "会話を始める" %>
 <% end %>

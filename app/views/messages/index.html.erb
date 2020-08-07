@@ -1,0 +1,11 @@
+<h1>ユーザー一覧</h1>
+
+<% if current_user.admin? %>
+  <h2>こんにちは <%= current_user.name %>さん</h2>
+  <% @users.each do |user| %>
+    <p><a href="/messages/<%= user.id %>"><%= user.name %>さん</a></p>
+    <hr>
+  <% end %>
+  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+  <%= link_to "会話履歴", rooms_path %>
+<% end %>
