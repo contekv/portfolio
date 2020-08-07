@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "contact",  to: "tops#contact"
   resources :users
   resources :messages
+  resources :rooms
   resources :admins
   resources :orders
   resources :medicines, only: [:show, :index]
