@@ -3,9 +3,13 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.admin?
-      admin_path(resource)
+      messages_path(resource)
     else
       user_path(resource)
     end
+  end
+
+  def correct_admin
+    redirect_to root_path unless current_user&.admin?
   end
 end
