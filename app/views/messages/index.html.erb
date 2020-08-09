@@ -3,7 +3,7 @@
 <% if current_user.admin? %>
   <h2>こんにちは <%= current_user.name %>さん</h2>
   <% @users.each do |user| %>
-    <p><a href="/messages/<%= user.id %>"><%= user.name %>さん</a></p>
+    <%= link_to user.name, message_path(user.id) %>
     <hr>
   <% end %>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>

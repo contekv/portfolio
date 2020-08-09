@@ -3,7 +3,7 @@
 <% end %>
 
 <% @entry.each do |entry| %>
-  <h2><strong><a href="/messages/<%= entry.user.id %>"><%= entry.user.name %></a></strong></h2>
+  <h5><strong><%=link_to entry.user.name, message_path(entry.user.id) %></strong></h5>
 <% end %>
 
 <hr>
