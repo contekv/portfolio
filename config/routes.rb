@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   devise_for :users, skip: :all, controllers: {
     sessions: "users/sessions",
     registraions: "users/registraiotns",
-    passwords: "users/passwords",  }
+    passwords: "users/passwords"}
 
   devise_scope :user do
     get "login", to: "devise/sessions#new", as: :new_user_session
