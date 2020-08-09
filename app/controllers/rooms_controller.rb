@@ -5,8 +5,8 @@ class RoomsController < ApplicationController
   def create
     @room = Room.create
     @entry1 = Entry.create(room_id: @room.id, user_id: current_user.id)
-    @entry2 = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
-    redirect_to "/rooms/#{@room.id}"
+    @entry2 = Entry.create(entry_params)
+    redirect_to room_path(@room.id)
   end
 
   def show
@@ -21,15 +21,16 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @currentEntries = current_user.entries
-    myRoomIds = []
-    @currentEntries.each do |entry|
-      myRoomIds << entry.room.id
-    end
+    my_room_ids = []
+    my_room_ids << current_user.entries.pluck(:room_id)
     @user = User.find_by(id: 1, name: "管理者")
-    @anotherEntries = Entry.where(room_id: myRoomIds).where("user_id != ?", @user.id)
-    @users = User.all
-    @rooms = Room.all
-    @messages = Message.where(user_id: @users, room_id: @rooms)
+    @another_entries = Entry.where(room_id: my_room_ids).where.not(user_id: @user.id)
+    @messages = Message.all
+  end
+
+  protected
+
+  def entry_params
+    params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id)
   end
 end
