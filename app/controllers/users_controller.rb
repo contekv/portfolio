@@ -1,19 +1,20 @@
 class UsersController < ApplicationController
-
+  layout "devise"
   before_action :sign_user
   before_action :authenticate_user!
-  before_action :correct_user
+  before_action :correct_admin, only: [:index]
+
+  def index
+    @users = User.where.not(id: 1, name: "管理者")
+  end
 
   def show
     @user = User.find(params[:id])
-  end
-
-  def sign_user
-    redirect_to root_path unless user_signed_in?
-  end
-
-  def correct_user
-    user = User.find(params[:id])
-    redirect_to root_path unless user == current_user
+    if @user.conversations.present?
+      @conversation = @user.conversations.pluck(:id)
+      @conver_id = true
+    else
+       @conversation = Conversation.new
+    end
   end
 end
