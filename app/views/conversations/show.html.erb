@@ -1,0 +1,32 @@
+<% unless current_user.admin? %>
+  <h1><%= link_to "My ドクター", home_path(current_user) %></h1>
+<% end %>
+
+<% @conversaiton.each do |conver| %>
+  <h5><strong><%= link_to conver.user.name, user_path(conver.user.id) %></strong></h5>
+<% end %>
+
+<hr>
+<% if @messages.present? %>
+  <% @messages.each do |msg| %>
+    <strong><%= msg.content %></strong>
+    <small><%= l msg.created_at, format: :short %></small>
+    <small>by<strong><%= msg.user.name %></strong></small>
+
+      <% if msg.user == current_user %>
+        <%= link_to "削除", msg, method: :delete, data:{confirm: "コメントを削除しますか？"} %>
+      <% end %>
+    <hr>
+  <% end %>
+  <% else %>
+  <h3 class="text-center">まだ会話は行われていません</h3>
+<% end %>
+
+<%= render "form" %>
+
+<% if current_user.admin? %>
+  <%= link_to "会話履歴", conversations_path %>
+  <%= link_to "ユーザー一覧に戻る", users_path %>
+<% else %>
+  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+<% end %>
