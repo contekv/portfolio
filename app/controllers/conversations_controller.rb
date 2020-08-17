@@ -27,8 +27,6 @@ class ConversationsController < ApplicationController
     user = User.all
     @all_conver = Conversation.where(user_id: user)
     messages = Message.all
-    admin = User.find_by(id:1)
-    not_admin_messages = Message.where.not(conversation_id: admin.id)
   end
 
   protected
