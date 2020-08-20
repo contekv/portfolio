@@ -16,7 +16,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     if @conversation.present?
       @messages = @conversation.messages
-      @conversations = @conversation.user
+      @conver_user = @conversation.user
     else
       redirect_back(fallback_location: root_path)
     end

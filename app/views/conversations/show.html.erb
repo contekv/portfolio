@@ -2,7 +2,7 @@
   <h1><%= link_to "My ドクター", home_path(current_user) %></h1>
 <% end %>
 
-<h5><strong><%=link_to @conversations.name, user_path(@conversations.id)%></strong></h5><hr>
+<h5><strong><%=link_to @conver_user.name, user_path(@conver_user.id)%></strong></h5><hr>
 
 <% if @messages.present? %>
   <% @messages.each do |msg| %>
