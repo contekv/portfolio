@@ -5,16 +5,11 @@ class UsersController < ApplicationController
   before_action :correct_admin, only: [:index]
 
   def index
-    @users = User.where.not(id: 1, name: "管理者")
+    @users = User.not_admin
   end
 
   def show
     @user = User.find(params[:id])
-    if @user.conversations.present?
-      @conversation = @user.conversations.pluck(:id)
-      @conver_id = true
-    else
-       @conversation = Conversation.new
-    end
+    @conversation = @user.conversations.ids
   end
 end

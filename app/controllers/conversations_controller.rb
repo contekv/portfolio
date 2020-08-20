@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    admin = User.find_by(id: 1, name: "管理者")
+    admin = User.admin
     @conversation = Conversation.new(conversation_params.merge(admin_id: admin.id))
     if @conversation.save
       redirect_to conversation_path(@conversation)
@@ -13,11 +13,10 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    if @conversation = Conversation.find(params[:id])
-      user = User.find_by(params[:id])
-      @conversaiton = Conversation.where(user_id: user.id) 
-      @message = Message.new
+    @conversation = Conversation.find(params[:id])
+    if @conversation.present?
       @messages = @conversation.messages
+      @conversations = @conversation.user
     else
       redirect_back(fallback_location: root_path)
     end
@@ -25,8 +24,7 @@ class ConversationsController < ApplicationController
 
   def index
     user = User.all
-    @all_conver = Conversation.where(user_id: user)
-    messages = Message.all
+    @all_convers = Conversation.where(user_id: user)
   end
 
   protected
