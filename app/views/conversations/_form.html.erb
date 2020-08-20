@@ -1,6 +1,6 @@
-<%= form_with model: @message do |f| %>
+<%= form_with model: Message.new do |f| %>
   <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 150 %>
-  <%= f.hidden_field :conversation_id, :value => @conversation.id %>
+  <%= f.hidden_field :conversation_id, value: conversation.id %>
   <br>
   <%= f.submit "送信" %>
 <% end %>

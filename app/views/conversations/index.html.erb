@@ -1,7 +1,7 @@
 <h1>会話履歴</h1>
 
-<% @all_conver.each do |conver| %>
-  <% if conver.messages.presence %>
+<% @all_convers.each do |conver| %>
+  <% if conver.messages.present? %>
     <%= conver.messages.sorted_desc.first.content %>
       <%= link_to conversation_path(conver.id) do %>
       <%= conver.user.name %><br>

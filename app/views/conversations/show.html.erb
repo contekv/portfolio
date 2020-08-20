@@ -2,11 +2,8 @@
   <h1><%= link_to "My ドクター", home_path(current_user) %></h1>
 <% end %>
 
-<% @conversaiton.each do |conver| %>
-  <h5><strong><%= link_to conver.user.name, user_path(conver.user.id) %></strong></h5>
-<% end %>
+<h5><strong><%=link_to @conversations.name, user_path(@conversations.id)%></strong></h5><hr>
 
-<hr>
 <% if @messages.present? %>
   <% @messages.each do |msg| %>
     <strong><%= msg.content %></strong>
@@ -22,7 +19,7 @@
   <h3 class="text-center">まだ会話は行われていません</h3>
 <% end %>
 
-<%= render "form" %>
+<%= render "form", conversation: @conversation %>
 
 <% if current_user.admin? %>
   <%= link_to "会話履歴", conversations_path %>
