@@ -2,9 +2,9 @@
 <div id="conversations"><h2><%= @user.name %></h2></div>
 
 <% if @user.conversations.present? %>
-  <p><%= link_to "会話へ", conversation_path(@conversation) %></a>
+  <p><%= link_to "会話へ", conversation_path(@conversation_id) %></a>
 <% else %>
-  <%= render "form" %>
+  <%= render "form", conversation: @conversation, user: @user %>
 <% end %>
 
 <% if current_user.admin? %>
