@@ -1,7 +1,10 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
+  <meta charset="utf-8">
+	<title>MediRoom</title>
+	<meta name="format-detection" content="telephone=no"><!--電話番号と思われる文字列が自動的にリンクされることを無効化-->
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
