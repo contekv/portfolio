@@ -1,6 +1,6 @@
 class TopsController < ApplicationController
-  layout 'devise'
+  layout "devise"
 
-  def home
+  def top
   end
 end

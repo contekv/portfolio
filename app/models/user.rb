@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :conversations, dependent: :destroy
+  has_many :messages, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  scope :admin, -> { find_by(name: "管理者") }
+  scope :not_admin, -> { where.not(name: "管理者") }
 end

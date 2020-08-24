@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag 'tops' %>
+<!--PC用HTML-->
+<div class="pc">
+  <div class="system_name">
+    MediRoom
+  </div>
+
+  <div class="copy">
+	医療をもっと身近に<br>
+	オンラインで医療とつながる時代へ
+  </div>
+
+  <menu>
+    <ul>
+      <li><%= link_to "アカウント新規作成", new_user_registration_path, class: "btn-gradient-radius" %></li>
+      <li><%= link_to "テストログイン", users_guest_sign_in_path, class: "btn-gradient-radius", method: :post %></li>
+      <li><%= link_to "ログイン", new_user_session_path, class: "btn-gradient-radius" %></li>
+      <li><%= link_to "パスワードを忘れた方はこちら", new_user_password_path, class: "btn-gradient-radius" %></li>
+    </ul>
+  </menu>
+</div>
+
+<!--モバイル用のHTML-->
+<div class="sp">
+  <div class="system_name">
+	MediRoom
+  </div>
+  <div class="copy">
+	医療をもっと身近に<br>
+	オンラインで医療とつながる時代へ
+  </div>
+  <menu>
+    <ul>
+      <li><%= link_to "アカウント新規作成", new_user_registration_path, class: "btn-gradient-radius" %></li>
+      <li><%= link_to "テストログイン", users_guest_sign_in_path, class: "btn-gradient-radius", method: :post %></li>
+      <li><%= link_to "ログイン", new_user_session_path, class: "btn-gradient-radius" %></li>
+      <li><%= link_to "パスワードを忘れた方はこちら", new_user_password_path, class: "btn-gradient-radius" %></li>
+    </ul>
+  </menu>
+</div>

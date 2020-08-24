@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
 
-  root "tops#home"
+  root "tops#top"
   get "features", to: "tops#about"
   get "help",     to: "tops#help"
   get "contact",  to: "tops#contact"
+
+  resources :homes
   resources :users
-  resources :admins
-  resources :orders
-  resources :medicines, only: [:show, :index]
-  
+  resources :messages
+  resources :conversations
+
   # ログイン、アカウント編集後、任意のページに推移させるための記述
   devise_for :users, skip: :all, controllers: {
     sessions: "users/sessions",
     registraions: "users/registraiotns",
-    passwords: "users/passwords",}
+    passwords: "users/passwords" }
 
-    devise_scope :user do
+  devise_scope :user do
     get "login", to: "devise/sessions#new", as: :new_user_session
     post "login", to: "devise/sessions#create", as: :user_session
     delete "logout", to: "devise/sessions#destroy", as: :destroy_user_session

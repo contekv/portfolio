@@ -1,10 +1,14 @@
-<% provide(:title,"HOME" ) %>
-<h1>(<%= @user.name %>)</h1>
+<h1>プロフィール詳細</h1>
+<div id="conversations"><h2><%= @user.name %></h2></div>
 
-<%= link_to "Myドクター", "#" %>
-<%= link_to "注文", "#" %>
-<%= link_to "注文履歴", "#" %>
-<%= link_to "お薬手帳　登録", "#" %>
-<%= link_to "お薬手帳　参照", "#" %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<%= link_to "マニュアル", "#" %>
+<% if @user.conversations.present? %>
+  <p><%= link_to "会話へ", conversation_path(@conversation_id) %></a>
+<% else %>
+  <%= render "form", conversation: @conversation, user: @user %>
+<% end %>
+
+<% if current_user.admin? %>
+  <%= link_to "ユーザー一覧に戻る", users_path %>
+<% else %>
+  <%= link_to "HOME", home_path %>
+<% end %> 
