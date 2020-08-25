@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   get "features", to: "tops#about"
   get "help",     to: "tops#help"
   get "contact",  to: "tops#contact"
-
   resources :homes
-  resources :users
   resources :messages
   resources :conversations
+  resources :users do
+    member do
+      get "purge"
+    end
+  end
 
   # ログイン、アカウント編集後、任意のページに推移させるための記述
   devise_for :users, skip: :all, controllers: {
@@ -25,8 +28,8 @@ Rails.application.routes.draw do
     get "signup/cancel", to: "devise/registrations#cancel", as: :cancel_user_registration
     get "user", to: "devise/registrations#edit", as: :edit_user_registration
     patch "user", to: "devise/registrations#update", as: nil
-    put "user", to: "devise/registrations#update", as: :update_user_registration
-    delete "user", to: "devise/registrations#destroy", as: :destroy_user_registration
+    put "/signup/create", to: "users/registrations#update", as: :update_user_registration
+    delete "/signup/create", to: "users/registrations#destroy", as: :destroy_user_registration
     get "password", to: "devise/passwords#new", as: :new_user_password
     post "password", to: "devise/passwords#create", as: :user_password
     get "password/edit", to: "devise/passwords#edit", as: :edit_user_password
