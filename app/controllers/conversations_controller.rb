@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
   layout "devise"
   before_action :authenticate_user!
+  before_action :correct_admin, only: [:index]
 
   def create
     admin = User.admin
@@ -11,7 +12,7 @@ class ConversationsController < ApplicationController
       redirect_back(fallback_location: user_path)
     end
   end
-
+  
   def show
     @conversation = Conversation.find(params[:id])
     if @conversation.present?
