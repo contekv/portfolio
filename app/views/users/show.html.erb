@@ -1,6 +1,16 @@
 <h1>プロフィール詳細</h1>
 <div id="conversations"><h2><%= @user.name %></h2></div>
 
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar.variant(resize:'100x100') %>
+<% else %>
+  <%= image_tag "default_user.png", :size => "50x50" %>
+<% end %>
+
+<% if @user == current_user %>
+<%= link_to "プロフィール設定", edit_user_registration_path(@user.id) %>
+<% end %>
+
 <% if @user.conversations.present? %>
   <p><%= link_to "会話へ", conversation_path(@conversation_id) %></a>
 <% else %>

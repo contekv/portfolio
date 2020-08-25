@@ -8,4 +8,4 @@
 <%= link_to "お薬手帳　参照", "#" %>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <%= link_to "マニュアル", "#" %>
-<%= link_to "プロフィール", "#" %>
+<%= link_to "プロフィール", edit_user_registration_path(@user.id) %>

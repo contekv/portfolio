@@ -2,10 +2,10 @@
   <h1><%= link_to "My ドクター", home_path(current_user) %></h1>
 <% end %>
 
-<h5><strong><%=link_to @conversation.user.name, user_path(@conversation.user.id)%></strong></h5><hr>
+<h5><strong><%= link_to @conversation.user.name, user_path(@conversation.user.id) %></strong></h5><hr>
 
-<%= render "messages", messages: @messages %>
-<%= render "form", conversation: @conversation, message: @message%>
+<%= render "messages", conversation: @conversation, messages: @messages %>
+<%= render "form", conversation: @conversation, message: @message %>
 
 <% if current_user.admin? %>
   <%= link_to "会話履歴", conversations_path %>

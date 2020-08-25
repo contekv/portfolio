@@ -4,11 +4,18 @@
     <small><%= l msg.created_at, format: :short %></small>
     <small>by<strong><%= msg.user.name %></strong></small>
 
-      <% if msg.user == current_user %>
-        <%= link_to "削除", msg, method: :delete, data:{confirm: "コメントを削除しますか？"} %>
-      <% end %>
+    <% if conversation.user.avatar.present? %>
+      <%= link_to image_tag(conversation.user.avatar.variant(resize: "50x50")), user_path(conversation.user) %>
+    <% else %>
+      <%= link_to image_tag("default_user.png", size: "50x50"), user_path(conversation.user) %>
+    <% end %>
+
+    <% if msg.user == current_user %>
+      <%= link_to "削除", msg, method: :delete, data:{confirm: "コメントを削除しますか？"} %>  
+    <% end %>
     <hr>
   <% end %>
+
 <% else %>
   <h3 class="text-center">まだ会話は行われていません</h3>
 <% end %>
