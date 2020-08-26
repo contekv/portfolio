@@ -2,7 +2,7 @@
 
 <% if @user.avatar.attached? %>
   <%= image_tag @user.avatar.variant(resize:'100x100') %>
-  <%= link_to '削除', purge_user_path(@user.id),　method: :delete,　data: { confirm: '本当に削除しますか？' } %>
+  <%= link_to 'アカウント画像を削除', purge_user_path(@user.id),　method: :get, data:{confirm: "アカウント画像を削除しますか？"} %>
 <% end %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
