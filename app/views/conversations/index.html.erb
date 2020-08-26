@@ -5,13 +5,7 @@
     <%= conver.messages.sorted_desc.first.content %>
       <%= link_to conversation_path(conver.id) do %>
       <%= conver.user.name %>
-
-      <% if conver.user.avatar.present? %>
-        <%= link_to image_tag(conver.user.avatar.variant(resize: "50x50")), user_path(conver.user) %>
-      <% else %>
-        <%= link_to image_tag("default_user.png", size: "50x50"), user_path(conver.user) %>
-      <% end %>
-      <br>
+      <%= render "avatars", conver: conver %><br>
     <% end %>
   <% end %>
 <% end %>

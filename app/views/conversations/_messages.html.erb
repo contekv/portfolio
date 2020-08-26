@@ -9,13 +9,12 @@
       <%= link_to "削除", msg, method: :delete, data:{confirm: "コメントを削除しますか？"} %>  
     <% end %>
     
-    <% if conversation.user.avatar.present? && msg.user != @admin %>
-      <%= link_to image_tag(conversation.user.avatar.variant(resize: "50x50")), user_path(conversation.user) %>
-    <% else %>
-      <%= link_to image_tag("default_user.png", size: "50x50"), user_path(conversation.user)  if  msg.user != @admin %>
+    <% if msg.user != @admin %>
+      <%= render "avatar", conversation: @conversation %>
     <% end %>
 
     <%= image_tag "admin.png", size: "50x50" if msg.user == @admin %><hr>
+
   <% end %>
   
 <% else %>
