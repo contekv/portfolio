@@ -1,0 +1,5 @@
+<% if conversation.user.avatar.present? %>
+  <%= link_to image_tag(conversation.user.avatar.variant(resize: "50x50")), user_path(conversation.user) %>
+<% else %>
+  <%= link_to image_tag("default_user.png", size: "50x50"), user_path(conversation.user) %>
+<% end %>
