@@ -17,6 +17,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     if @conversation.present?
       @messages = @conversation.messages
+      @admin = User.admin
       @message = Message.new
     else
       redirect_back(fallback_location: root_path)
