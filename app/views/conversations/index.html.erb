@@ -3,9 +3,10 @@
 <% @all_convers.each do |conver| %>
   <% if conver.messages.present? %>
     <%= conver.messages.sorted_desc.first.content %>
-      <%= link_to conversation_path(conver.id) do %>
+
+    <%= link_to conversation_path(conver.id) do %>
       <%= conver.user.name %>
-      <%= render "avatars", conver: conver %><br>
+      <%= render "/users/shared/avatar", user: conver.user %><hr>
     <% end %>
   <% end %>
 <% end %>

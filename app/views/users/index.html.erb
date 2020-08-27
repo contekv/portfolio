@@ -3,7 +3,7 @@
 
 <% @users.each do |user| %>
   <%= link_to user.name, user_path(user.id) %>
-  <%= render "avatar", user: user %><hr>
+  <%= render "/users/shared/avatar", user: user %><hr>
 <% end %>
 
 <%= link_to "会話履歴", conversations_path %>
