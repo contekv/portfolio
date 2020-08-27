@@ -12,10 +12,9 @@ class ConversationsController < ApplicationController
       redirect_back(fallback_location: user_path)
     end
   end
-  
+
   def show
-    @conversation = Conversation.find(params[:id])
-    if @conversation.present?
+    if @conversation = Conversation.find(params[:id])
       @messages = @conversation.messages
       @admin = User.admin
       @message = Message.new
@@ -31,7 +30,7 @@ class ConversationsController < ApplicationController
 
   protected
 
-  def conversation_params
-    params.require(:conversation).permit(:user_id)
-  end
+    def conversation_params
+      params.require(:conversation).permit(:user_id)
+    end
 end

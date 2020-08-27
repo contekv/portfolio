@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def purge
-    user = User.find(params[:id])
+    user = User.find_by(id: params[:id])
     user.avatar.purge
     redirect_to user_path
   end
