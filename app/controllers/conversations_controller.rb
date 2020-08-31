@@ -1,6 +1,7 @@
 class ConversationsController < ApplicationController
   layout "devise"
   before_action :authenticate_user!
+  before_action :correct_admin, only: [:index]
 
   def create
     admin = User.admin
@@ -13,9 +14,9 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
-    if @conversation.present?
+    if @conversation = Conversation.find(params[:id])
       @messages = @conversation.messages
+      @admin = User.admin
       @message = Message.new
     else
       redirect_back(fallback_location: root_path)
@@ -29,7 +30,7 @@ class ConversationsController < ApplicationController
 
   protected
 
-  def conversation_params
-    params.require(:conversation).permit(:user_id)
-  end
+    def conversation_params
+      params.require(:conversation).permit(:user_id)
+    end
 end

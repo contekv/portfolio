@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   layout "devise"
+  before_action :authenticate_user!
 
   def create
     @message = Message.new(message_params.merge(user_id: current_user.id))
