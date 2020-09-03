@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   resources :homes
   resources :messages
   resources :conversations
+  resources :admins
+  resources :medicines do
+    get :record, on: :member
+  end
   resources :users do
-    member do
-      get "purge"
-    end
+    get :purge, on: :member
   end
 
   # ログイン、アカウント編集後、任意のページに推移させるための記述
