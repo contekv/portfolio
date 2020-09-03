@@ -1,9 +1,6 @@
 <h2><%= @user.name %>さんの お薬手帳</h2>
 <h3>登録順に最新のお薬が5つ表示されます</h3>
-<%= render "users/shared/error_messages", resource: @medicine %>
-<% if @medicine.errors.any? %>
-   <p>エラーでーす。</p>
-<% end %>
+
 <% if @medicines.present? %>
   <% @medicines.each do |medi| %>
     <strong><%= medi.content %></strong>
