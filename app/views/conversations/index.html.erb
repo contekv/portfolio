@@ -11,5 +11,6 @@
   <% end %>
 <% end %>
 
+<%= paginate @all_convers %>
 <%= link_to "ユーザー一覧に戻る", users_path %>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

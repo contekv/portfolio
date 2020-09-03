@@ -6,5 +6,6 @@
   <%= render "/users/shared/avatar", user: user %><hr>
 <% end %>
 
+<%= paginate @users %>
 <%= link_to "会話履歴", conversations_path %>
 <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>

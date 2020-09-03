@@ -4,8 +4,8 @@
 <%= link_to "Myドクター", user_path(@user) %>
 <%= link_to "注文", "#" %>
 <%= link_to "注文履歴", "#" %>
-<%= link_to "お薬手帳　登録", "#" %>
-<%= link_to "お薬手帳　参照", "#" %>
+<%= link_to "お薬手帳　登録", medicine_path %>
+<%= link_to "お薬手帳　参照",  "#"%>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <%= link_to "マニュアル", "#" %>
 <%= link_to "プロフィール", edit_user_registration_path(@user.id) %>
