@@ -8,4 +8,5 @@ class User < ApplicationRecord
   scope :admin, -> { find_by(name: "管理者") }
   scope :not_admin, -> { where.not(name: "管理者") }
   scope :sorted_desc, -> { order(created_at: :desc) }
+  paginates_per 5
 end
