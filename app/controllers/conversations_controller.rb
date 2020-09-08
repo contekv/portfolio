@@ -25,7 +25,7 @@ class ConversationsController < ApplicationController
 
   def index
     user = User.all
-    @all_convers = Conversation.where(user_id: user).page(params[:page])
+    @all_convers = Conversation.where(user: user).page(params[:page])
   end
 
   protected
