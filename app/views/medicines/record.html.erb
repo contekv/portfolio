@@ -1,17 +1,11 @@
-<h1>お薬手帳　履歴</h1>
+<h1>お薬手帳　参照</h1>
 
 <% if @medicines.present? %>
-  <% @medicines.each do |re| %>
-    <%= re.content %><br>
-
-    <% if re.user == current_user %>
-      <%= link_to "削除", re, method: :delete, data:{confirm: "削除しますか？"} %>  
-    <% end %><hr>
-  <% end %>
+  <%= render "medicines", medicines: @medicines %>
 
   <%= paginate @medicines %>
-  <%= link_to "お薬手帳", medicine_path %>
 
+  <%= link_to "お薬手帳", medicine_path %>
 <% else %>
   <h3 class="text-center">お薬の履歴はありません。</h3>
 <% end %>

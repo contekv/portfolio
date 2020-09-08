@@ -1,5 +1,5 @@
 <%= form_with model: medicine do |f| %>
-  <%= f.text_field :content, :placeholder => "登録したいお薬を入力してください" , :size => 50 %>
+  <%= f.text_field :content, :placeholder => "登録したいお薬を入力してください", :size => 50 %>
   <%= f.hidden_field :user_id, value: user.id %><br>
   <%= f.submit "登録" %>
 <% end %>

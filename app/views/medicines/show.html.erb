@@ -2,18 +2,8 @@
 <h3>登録順に最新のお薬が5つ表示されます</h3>
 
 <% if @medicines.present? %>
-  <% @medicines.each do |medi| %>
-    <strong><%= medi.content %></strong>
-    <small><%= l medi.created_at, format: :short %></small>
-
-    <% if medi.user == current_user %>
-      <%= link_to "削除", medi, method: :delete, data:{confirm: "登録中のお薬を削除しますか？"} %>  
-      <%= link_to "編集", edit_medicine_path(medi)%> 
-    <% end %><hr>
-  <% end %>
-
-  <%= link_to "お薬手帳　履歴", record_medicine_path(@user) %>
-
+  <%= render "medicines", medicines: @medicines %>
+  <%= link_to "お薬手帳　参照", record_medicine_path(@user) %>
 <% else %>
   <h3 class="text-center">お薬は登録されていません。</h3>
 <% end %>

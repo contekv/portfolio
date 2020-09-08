@@ -2,7 +2,7 @@
 
   <% messages.each do |msg| %>
     <strong><%= msg.content %></strong>
-    <small><%= l msg.created_at, format: :short %></small>
+    <small><%= l msg.created_at, format: :short %></small><br>
     <small>by<strong><%= msg.user.name %></strong></small>
 
     <% if msg.user == current_user %>
