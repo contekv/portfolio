@@ -1,7 +1,7 @@
 <h1>お薬手帳　参照</h1>
 
 <% if @medicines.present? %>
-  <%= render "medicines", medicines: @medicines %>
+  <%= render partial: "medicines", collection: @medicines %>
 
   <%= paginate @medicines %>
 

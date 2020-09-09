@@ -1,9 +1,7 @@
-<% @medicines.each do |medicine| %>
-  <strong><%= medicine.content %></strong>
-  <small><%= l medicine.created_at, format: :short %></small>
+<strong><%= medicines.content %></strong>
+<small><%= l medicines.created_at, format: :short %></small>
 
-  <% if medicine.user == current_user %>
-    <%= link_to "削除", medicine, method: :delete, data:{confirm: "削除しますか？"} %>  
-    <%= link_to "編集", edit_medicine_path(medicine)%> 
-  <% end %><hr>
-<% end %>
+<% if medicines.user == current_user %>
+  <%= link_to "削除", medicines, method: :delete, data:{confirm: "削除しますか？"} %>  
+  <%= link_to "編集", edit_medicine_path(medicines)%> 
+<% end %><hr>
