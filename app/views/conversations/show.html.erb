@@ -2,7 +2,8 @@
   <h1><%= link_to "My ドクター", home_path(current_user) %></h1>
 <% end %>
 
-<h5><strong><%= link_to @conversation.user.name, user_path(@conversation.user.id) %></strong></h5><hr>
+<h5><strong><%= link_to @conversation.user.name, user_path(@conversation.user.id) %></strong></h5>
+<%= link_to "お薬手帳", medicine_path(@conversation.user) %><hr>
 
 <%= render "messages", conversation: @conversation, messages: @messages %>
 <%= render "form", conversation: @conversation, message: @message %>
@@ -10,6 +11,7 @@
 <% if current_user.admin? %>
   <%= link_to "会話履歴", conversations_path %>
   <%= link_to "ユーザー一覧に戻る", users_path %>
+  <%= link_to "管理者HOME", admin_path(@admin)%>
 <% else %>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
 <% end %>

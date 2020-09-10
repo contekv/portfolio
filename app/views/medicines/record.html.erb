@@ -1,0 +1,11 @@
+<h1>お薬手帳　参照</h1>
+
+<% if @medicines.present? %>
+  <%= render partial: "medicine", collection: @medicines %>
+
+  <%= paginate @medicines %>
+
+  <%= link_to "お薬手帳", medicine_path %>
+<% else %>
+  <h3 class="text-center">お薬の履歴はありません。</h3>
+<% end %>

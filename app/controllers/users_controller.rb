@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :correct_admin, only: [:index]
 
   def index
-    @users = User.not_admin
+    @users = User.not_admin.page(params[:page])
   end
 
   def edit

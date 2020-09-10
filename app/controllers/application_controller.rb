@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.admin?
-      users_path(resource)
+      admin_path(resource)
     else
       home_path(resource)
     end
   end
 
   protected
-  
+
   def sign_user
     redirect_to root_path unless user_signed_in?
   end
