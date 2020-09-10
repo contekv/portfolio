@@ -1,7 +1,0 @@
-<strong><%= medicines.content %></strong>
-<small><%= l medicines.created_at, format: :short %></small>
-
-<% if medicines.user == current_user %>
-  <%= link_to "削除", medicines, method: :delete, data:{confirm: "削除しますか？"} %>  
-  <%= link_to "編集", edit_medicine_path(medicines)%> 
-<% end %><hr>
