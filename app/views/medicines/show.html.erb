@@ -2,7 +2,7 @@
 <h3>登録順に最新のお薬が5つ表示されます</h3>
 
 <% if @medicines.present? %>
-  <%= render partial: "medicines", collection: @medicines %>
+  <%= render partial: "medicine", collection: @medicines %>
   <%= link_to "お薬手帳　参照", record_medicine_path(@user) %>
 <% else %>
   <h3 class="text-center">お薬は登録されていません。</h3>
