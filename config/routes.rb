@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'orders/new'
   root "tops#top"
   get "features", to: "tops#about"
   get "help",     to: "tops#help"
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :conversations
   resources :admins
+  resources :orders
   resources :medicines do
     get :record, on: :member
   end
