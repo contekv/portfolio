@@ -1,0 +1,47 @@
+<% if @orders0.present? %>
+  <h2>受付中の商品</h2>
+  <% @orders0.each do |order| %>
+    <%= order.content %><br>
+    <%= link_to order.user.name, order_path(order.user) %>
+    <%= render "select", order: order %>
+  <% end %>
+<% else %>
+  <h1>現在、受付中の商品はありません</h1>
+<% end %>
+<%= paginate @orders0, param_name: "waiting_page" %><hr>
+
+<% if @orders1.present? %>
+  <h2>注文中の商品</h2>
+  <% @orders1.each do |order| %>
+    <%= order.content %><br>
+    <%= link_to order.user.name, order_path(order.user) %>
+    <%= render "select", order: order %>
+  <% end %>
+<% else %>
+  <h1>現在、注文中の商品はありません</h1>
+<% end %>
+<%= paginate @orders1, param_name: "running_page" %><hr>
+
+<% if @orders2.present? %>
+  <h2>店舗到着の商品</h2>
+  <% @orders2.each do |order| %>
+    <%= order.content %><br>
+    <%= link_to order.user.name, order_path(order.user) %>
+    <%= render "select", order: order %>
+  <% end %>
+<% else %>
+  <h1>現在、店舗到着済の商品はありません</h1>
+<% end %>
+<%= paginate @orders2, param_name: "arrival_page" %><hr>
+
+<% if @orders3.present? %>
+  <h2>受取済の商品</h2>
+  <% @orders3.each do |order| %>
+    <%= order.content %><br>
+    <%= link_to order.user.name, order_path(order.user) %>
+    <%= render "select", order: order %>
+  <% end %>
+<% else %>
+  <h1>現在、受取済の商品はありません</h1><hr>
+<% end %>
+<%= paginate @orders3, param_name: "completed_page" %><hr>

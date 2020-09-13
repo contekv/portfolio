@@ -1,0 +1,5 @@
+<%= form_with model: Order.new, method: :post do |f| %>
+  <%= f.hidden_field :content, value: order.content %>
+  <%= f.hidden_field :user_id, value: order.user.id %>
+  <%= f.submit "再注文", method: :create, data:{ confirm: "#{order.content}を再注文しますか？" } %>
+<% end %>
