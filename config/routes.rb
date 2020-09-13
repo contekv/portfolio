@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'orders/new'
   root "tops#top"
   get "features", to: "tops#about"
   get "help",     to: "tops#help"
