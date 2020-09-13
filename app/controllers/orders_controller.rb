@@ -13,10 +13,10 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders0 = Order.waiting.page(params[:waiting_page]).sorted_desc
-    @orders1 = Order.running.page(params[:running_page]).sorted_desc
-    @orders2 = Order.arrival.page(params[:arrival_page]).sorted_desc
-    @orders3 = Order.completed.page(params[:completed_page]).sorted_desc
+    @waiting_orders = Order.waiting.page(params[:waiting_page]).sorted_desc
+    @running_orders = Order.running.page(params[:running_page]).sorted_desc
+    @arrival_orders = Order.arrival.page(params[:arrival_page]).sorted_desc
+    @completed_orders = Order.completed.page(params[:completed_page]).sorted_desc
   end
 
   def create
