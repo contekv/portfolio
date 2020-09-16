@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   layout "devise"
   before_action :authenticate_user!
   before_action :set_order, only: [:update, :destroy]
+  ORDERS_LIMIT = 10
 
   def new
     @order = Order.new
@@ -9,7 +10,7 @@ class OrdersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = Order.where(user_id: @user.id).page(params[:page]).per(10).sorted_desc
+    @orders = Order.where(user_id: @user.id).page(params[:page]).per(ORDERS_LIMIT).sorted_desc
   end
 
   def index
@@ -21,13 +22,16 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    message = @order.save ? "注文が完了しました" : "注文が完了されませんでした"
-    redirect_to order_path(@order.user), alert: message
+    if @order.save
+      redirect_to order_path(@order.user), alert: "注文が完了しました"
+    else
+      redirect_back(fallback_location: order_path(@order.user), alert: "注文が完了しませんでした")
+    end
   end
 
   def update
-    @order.update(order_params)
-    redirect_back(fallback_location: orders_path, alert: "更新しました")
+    message =  @order.update(order_params) ? "更新しました" : "更新が完了していません"
+    redirect_back(fallback_location: orders_path, alert: message)
   end
 
   def destroy
