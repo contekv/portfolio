@@ -6,4 +6,4 @@
   <% else %>
     <h3 class="text-center">注文はされていません。</h3>
   <% end %>
-  <%= link_to "注文　新規", new_order_path %>
+  <%= link_to "注文　新規", new_order_path unless current_user.admin? %>

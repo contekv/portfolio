@@ -1,9 +1,7 @@
 <% if @waiting_orders.present? %>
   <h2>受付中の商品</h2>
   <% @waiting_orders.each do |order| %>
-    <%= order.content %><br>
-    <%= link_to order.user.name, order_path(order.user) %>
-    <%= render "select", order: order %>
+   <%= render "select_order", order: order %>
   <% end %>
 <% else %>
   <h1>現在、受付中の商品はありません</h1>
@@ -13,9 +11,7 @@
 <% if @running_orders.present? %>
   <h2>注文中の商品</h2>
   <% @running_orders.each do |order| %>
-    <%= order.content %><br>
-    <%= link_to order.user.name, order_path(order.user) %>
-    <%= render "select", order: order %>
+    <%= render "select_order", order: order %>
   <% end %>
 <% else %>
   <h1>現在、注文中の商品はありません</h1>
@@ -25,9 +21,7 @@
 <% if @arrival_orders.present? %>
   <h2>店舗到着の商品</h2>
   <% @arrival_orders.each do |order| %>
-    <%= order.content %><br>
-    <%= link_to order.user.name, order_path(order.user) %>
-    <%= render "select", order: order %>
+    <%= render "select_order", order: order %>
   <% end %>
 <% else %>
   <h1>現在、店舗到着済の商品はありません</h1>
@@ -37,9 +31,7 @@
 <% if @completed_orders.present? %>
   <h2>受取済の商品</h2>
   <% @completed_orders.each do |order| %>
-    <%= order.content %><br>
-    <%= link_to order.user.name, order_path(order.user) %>
-    <%= render "select", order: order %>
+   <%= render "select_order", order: order %>
   <% end %>
 <% else %>
   <h1>現在、受取済の商品はありません</h1><hr>
