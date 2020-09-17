@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :users do
+    get 'orders/index'
+  end
   root "tops#top"
   get "features", to: "tops#about"
   get "help",     to: "tops#help"
@@ -14,6 +17,11 @@ Rails.application.routes.draw do
   end
   resources :users do
     get :purge, on: :member
+  end
+  namespace :users, only: :index do
+    resources :users, only: :show do
+      resources :orders, only: :index
+    end
   end
 
   # ログイン、アカウント編集後、任意のページに推移させるための記述
