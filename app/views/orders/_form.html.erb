@@ -1,0 +1,5 @@
+<%= form_with model: order do |f| %>	
+  <%= f.text_field :content, placeholder: "注文内容をご記入下さい", :size => 140 %>
+  <%= f.hidden_field :user_id, value: current_user.id %><br>
+  <%= f.submit "注文", data:{ confirm: "こちらの内容を注文しますか？" } %>
+<% end %> 

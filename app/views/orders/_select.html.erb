@@ -1,0 +1,4 @@
+<%= form_with model: order do |f| %>
+  <%= f.select :order_type, Order.order_types_i18n.invert %>
+<%= f.submit "変更"%>
+<% end %>
