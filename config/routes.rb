@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
   root "tops#top"
-  get "features", to: "tops#about"
-  get "help",     to: "tops#help"
-  get "contact",  to: "tops#contact"
   resources :homes
   resources :messages
   resources :conversations
