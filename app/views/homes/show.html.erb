@@ -3,7 +3,7 @@
 
 <%= link_to "Myドクター", user_path(@user) %>
 <%= link_to "注文", new_order_path %>
-<%= link_to "注文履歴", order_path(@order.user) %>
+<%= link_to "注文履歴", users_user_orders_path(@user) %>
 <%= link_to "お薬手帳　登録", medicine_path %>
 <%= link_to "お薬手帳　参照", record_medicine_path(@user)%>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

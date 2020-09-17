@@ -4,5 +4,5 @@
 
 <% if order.user == current_user %>
   <%= link_to "キャンセル", order, method: :delete, data: {confirm: "キャンセルしますか？"} unless order.completed? %><br> 
-  <%= render "reorder", order: order, user: order.user %>
+  <%= render "orders/reorder", order: order, user: order.user %>
 <% end %><hr>
