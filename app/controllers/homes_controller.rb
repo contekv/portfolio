@@ -5,6 +5,5 @@ class HomesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @order = @user.orders.build
   end
 end

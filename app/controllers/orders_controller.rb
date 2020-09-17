@@ -8,11 +8,6 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def show
-    @user = User.find(params[:id])
-    @orders = Order.where(user_id: @user.id).page(params[:page]).per(ORDERS_LIMIT).sorted_desc
-  end
-
   def index
     @waiting_orders = Order.waiting.page(params[:waiting_page]).sorted_desc
     @running_orders = Order.running.page(params[:running_page]).sorted_desc
@@ -23,9 +18,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      redirect_to order_path(@order.user), alert: "注文が完了しました"
+      redirect_to users_user_orders_path(@order.user), alert: "注文が完了しました"
     else
-      redirect_back(fallback_location: order_path(@order.user), alert: "注文が完了しませんでした")
+      redirect_back(fallback_location: users_user_orders_path(@order.user), alert: "注文が完了しませんでした")
     end
   end
 
@@ -36,7 +31,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
-    redirect_to order_path(@order.user), notice: "注文がキャンセルされました"
+    redirect_to users_user_orders_path(@order.user), notice: "注文がキャンセルされました"
   end
 
   private
