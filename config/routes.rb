@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :users do
-    get 'orders/index'
-  end
   root "tops#top"
   get "features", to: "tops#about"
   get "help",     to: "tops#help"
