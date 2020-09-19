@@ -5,9 +5,12 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params.merge(user_id: current_user.id))
     if @message.save
-      redirect_to conversation_path(@conversation.id)
     else
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_to conversation_path(@conversation.id) }
+        format.js
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 
@@ -18,9 +21,9 @@ class MessagesController < ApplicationController
     redirect_back(fallback_location: conversation_path)
   end
 
-  protected
+  private
 
-  def message_params
-    params.require(:message).permit(:content, :conversation_id, :user_id)
-  end
+    def message_params
+      params.require(:message).permit(:content, :conversation_id, :user_id)
+    end
 end

@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
   layout "devise"
   before_action :authenticate_user!
   before_action :correct_admin, only: [:index]
+  MESSAGE_LIMIT = 10
 
   def create
     admin = User.admin
@@ -24,10 +25,10 @@ class ConversationsController < ApplicationController
   end
 
   def index
-    @all_convers = Conversation.all.page(params[:page])
+    @all_convers = Conversation.all.page(params[:page]).per(MESSAGE_LIMIT)
   end
 
-  protected
+  private
 
     def conversation_params
       params.require(:conversation).permit(:user_id)
