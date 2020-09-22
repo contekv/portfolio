@@ -22,7 +22,7 @@ class MedicinesController < ApplicationController
 
   def update
     if @medicine.update(medicine_params)
-      redirect_to record_medicine_path(@medicine.user), notice: "お薬が登録されました"
+      redirect_to record_medicine_path(@medicine.user), notice: "お薬が更新されました"
     else
       redirect_back(fallback_location: medicine_path(@medicine.user), notice: "お薬が更新されませんでした")
     end
@@ -41,10 +41,6 @@ class MedicinesController < ApplicationController
 
     def medicine_params
       params.require(:medicine).permit(:content, :user_id)
-    end
-
-    def set_user
-      @user = User.find(params[:id])
     end
 
     def set_medicine

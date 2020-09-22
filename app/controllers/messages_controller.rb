@@ -4,23 +4,19 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params.merge(user_id: current_user.id))
-    if @message.save
-      redirect_to conversation_path(@conversation.id)
-    else
-      redirect_back(fallback_location: root_path)
-    end
+    message =  @message.save ? "メッセージが送信されました" : "メッセージは送信されませんでした"
+    redirect_back(fallback_location: conversation_path(@message), alert: message)
   end
 
   def destroy
     @message = Message.find_by(id: params[:id])
     @message.destroy
-    flash[:success] = "コメントを削除しました"
-    redirect_back(fallback_location: conversation_path)
+    redirect_back(fallback_location: conversation_path, alert: "メッセージを削除しました")
   end
 
-  protected
+  private
 
-  def message_params
-    params.require(:message).permit(:content, :conversation_id, :user_id)
-  end
+    def message_params
+      params.require(:message).permit(:content, :conversation_id, :user_id)
+    end
 end

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   layout "devise"
   before_action :authenticate_user!
+  before_action :correct_admin, only: [:index]
   before_action :set_order, only: [:update, :destroy]
   ORDERS_LIMIT = 10
 
