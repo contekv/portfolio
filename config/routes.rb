@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   root "tops#top"
-  resources :homes
-  resources :messages
-  resources :conversations
-  resources :admins
-  resources :orders
+  resources :homes, only: [:show]
+  resources :messages, only: [:create, :destroy]
+  resources :conversations, only: [:show, :index, :create]
+  resources :admins, only: [:show]
+  resources :orders, except: [:edit]
   resources :medicines do
     get :record, on: :member
   end
@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :users, only: :show do
       resources :orders, only: :index
     end
+  end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
   # ログイン、アカウント編集後、任意のページに推移させるための記述
