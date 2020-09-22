@@ -2,12 +2,12 @@
 
 <% @all_convers.each do |conver| %>
   <% if conver.messages.present? %>
-    <%= conver.messages.sorted_desc.first.content %>
-
     <%= link_to conversation_path(conver.id) do %>
-      <%= conver.user.name %>
-      <%= render "/users/shared/avatar", user: conver.user %><hr>
-    <% end %>
+      <%= conver.messages.sorted_desc.first.content%>
+    <% end %> 
+    
+    <%= conver.user.name %>
+    <%= render "/users/shared/avatar", user: conver.user %><hr>
   <% end %>
 <% end %>
 

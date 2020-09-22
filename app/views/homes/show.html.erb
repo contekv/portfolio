@@ -1,10 +1,14 @@
 <% provide(:title,"HOME" ) %>
 <h1>こんにちは  <%= @user.name %>  さん</h1>
 
-<%= link_to "Myドクター", user_path(@user) %>
-<%= link_to "注文", new_order_path %>
-<%= link_to "注文履歴", users_user_orders_path(@user) %>
-<%= link_to "お薬手帳　登録", medicine_path %>
-<%= link_to "お薬手帳　参照", record_medicine_path(@user)%>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<%= link_to "プロフィール", edit_user_registration_path(@user.id) %>
+<% if @user.conversations.present? %>
+  <p><%= button_to "myドクター", conversation_path(@conversation_id), method: :get %></p>
+<% else %>
+  <%= render "users/shared/form", conversation: @conversation, user: @user %>
+<% end %>
+<%= button_to "注文", new_order_path, method: :get %>
+<%= button_to "注文履歴", users_user_orders_path(@user), method: :get %>
+<%= button_to "お薬手帳　登録", medicine_path, method: :get %>
+<%= button_to "お薬手帳　参照", record_medicine_path(@user), method: :get %>
+<%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
+<%= button_to "プロフィール", user_path(@user), method: :get%>

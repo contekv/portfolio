@@ -3,5 +3,5 @@
 
 <% if medicine.user == current_user %>
   <%= link_to "削除", medicine, method: :delete, data:{confirm: "削除しますか？"} %>  
-  <%= link_to "編集", edit_medicine_path(medicine)%> 
+  <%= link_to "編集", edit_medicine_path(medicine), method: :get %> 
 <% end %><hr>
