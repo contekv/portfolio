@@ -1,7 +1,7 @@
-# frozen_string_literal: true
-class Users::PasswordsController < DeviseController
+class Users::PasswordsController < Devise::PasswordsController
   prepend_before_action :require_no_authentication
   append_before_action :assert_reset_token_passed, only: :edit
+  before_action :check_admin
 
   def new
     self.resource = resource_class.new
@@ -29,7 +29,6 @@ class Users::PasswordsController < DeviseController
     yield resource if block_given?
 
     if resource.errors.empty?
-      resource.unlock_access! if unlockable?(resource)
       if Devise.sign_in_after_reset_password
         flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
         set_flash_message!(:notice, flash_message)
@@ -47,6 +46,12 @@ class Users::PasswordsController < DeviseController
 
   protected
 
+    def check_admin
+      if params[:user][:email] == "admin@example.jp" or "test@test.com"
+        redirect_to root_path, alert: "管理者又はゲストユーザーはパスワードの再発行はできません。"
+      end
+    end
+
     def after_resetting_password_path_for(resource)
       Devise.sign_in_after_reset_password ? after_sign_in_path_for(resource) : new_session_path(resource_name)
     end
@@ -62,14 +67,6 @@ class Users::PasswordsController < DeviseController
         set_flash_message(:alert, :no_token)
         redirect_to new_session_path(resource_name)
       end
-    end
-
-    # Check if proper Lockable module methods are present & unlock strategy
-    # allows to unlock resource on password reset
-    def unlockable?(resource)
-      resource.respond_to?(:unlock_access!) &&
-        resource.respond_to?(:unlock_strategy_enabled?) &&
-        resource.unlock_strategy_enabled?(:email)
     end
 
     def translation_scope

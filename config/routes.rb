@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     put "/signup/create", to: "users/registrations#update", as: :update_user_registration
     delete "/signup/create", to: "users/registrations#destroy", as: :destroy_user_registration
     get "password", to: "devise/passwords#new", as: :new_user_password
-    post "password", to: "devise/passwords#create", as: :user_password
+    post "password", to: "users/passwords#create", as: :user_password
     get "password/edit", to: "devise/passwords#edit", as: :edit_user_password
     patch "password", to: "devise/passwords#update"
     put "password", to: "devise/passwords#update", as: :update_user_password
