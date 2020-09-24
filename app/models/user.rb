@@ -10,8 +10,8 @@ class User < ApplicationRecord
   scope :not_admin, -> { where.not(name: "管理者") }
   scope :sorted_desc, -> { order(created_at: :desc) }
 
-  def self.guest
-    find_or_create_by!(email: "test@test.com") do |user|
+  def self.secure_guest(email)
+    find_or_create_by!(email: email) do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
