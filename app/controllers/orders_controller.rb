@@ -3,17 +3,17 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_admin, only: [:index]
   before_action :set_order, only: [:update, :destroy]
-  ORDERS_LIMIT = 10
+  ORDERS_LIMIT = 5
 
   def new
     @order = Order.new
   end
 
   def index
-    @waiting_orders = Order.waiting.page(params[:waiting_page]).sorted_desc
-    @running_orders = Order.running.page(params[:running_page]).sorted_desc
-    @arrival_orders = Order.arrival.page(params[:arrival_page]).sorted_desc
-    @completed_orders = Order.completed.page(params[:completed_page]).sorted_desc
+    @waiting_orders = Order.waiting.page(params[:waiting_page]).per(ORDERS_LIMIT).sorted_desc
+    @running_orders = Order.running.page(params[:running_page]).per(ORDERS_LIMIT).sorted_desc
+    @arrival_orders = Order.arrival.page(params[:arrival_page]).per(ORDERS_LIMIT).sorted_desc
+    @completed_orders = Order.completed.page(params[:completed_page]).per(ORDERS_LIMIT).sorted_desc
   end
 
   def create
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
   def update
     message =  @order.update(order_params) ? "更新しました" : "更新が完了していません"
-    redirect_back(fallback_location: orders_path, alert: message)
+    redirect_to orders_path, alert: message
   end
 
   def destroy
