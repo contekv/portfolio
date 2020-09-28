@@ -3,9 +3,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @message = Message.new(message_params.merge(user_id: current_user.id))
-    message =  @message.save ? "メッセージが送信されました" : "メッセージは送信されませんでした"
-    redirect_back(fallback_location: conversation_path(@message), alert: message)
+    @message = Message.create!(message_params.merge(user_id: current_user.id))
   end
 
   def destroy

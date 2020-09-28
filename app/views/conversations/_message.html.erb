@@ -1,0 +1,16 @@
+<% if message.present? %>	
+	
+    <strong><%= message.content %></strong>
+    <small><%= l message.created_at, format: :short %></small><br>
+    <small>by<strong><%= message.user.name %></strong></small>
+	
+	<% if message.user == current_user %>
+	  <%= link_to "削除", message, method: :delete, data:{confirm: "コメントを削除しますか？"} %> 
+	<% end %>
+	
+	<%= render "/users/shared/avatar", user: message.conversation.user unless message.user.admin? %>
+	<%= image_tag "admin.png", size: "50x50" if message.user.admin %><hr>
+  
+<% else %>
+  <h3 class="text-center">まだ会話は行われていません</h3>
+<% end %> 
