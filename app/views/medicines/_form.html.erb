@@ -1,5 +1,9 @@
 <%= form_with model: medicine do |f| %>	
   <%= f.text_field :content, :placeholder => "登録したいお薬を入力してください", :size => 50 %>
-  <%= f.hidden_field :user_id, value: user.id %><br>
-  <%= f.submit "登録" %>
+  <%= f.hidden_field :user_id, value: current_user.id %><br>
+  <%= f.submit value %>
+
+  <% if value == '更新' %>
+    <%= link_to '取消', medicine_path(medicine.user), data: { remote: true } %>
+  <% end %>
 <% end %> 

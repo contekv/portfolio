@@ -1,7 +1,9 @@
-<strong><%= medicine.content %></strong>
-<small><%= l medicine.created_at, format: :short %></small>
+<p id="medicine-<%= medicine.id %>">
+  <strong><%= medicine.content %></strong>
+  <small><%= l medicine.created_at, format: :short %></small>
 
-<% if medicine.user == current_user %>
-  <%= link_to "削除", medicine, method: :delete, data:{confirm: "削除しますか？"} %>  
-  <%= link_to "編集", edit_medicine_path(medicine) %>
-<% end %><hr>
+  <% if medicine.user == current_user %>
+    <%= link_to "削除", medicine, method: :delete, data:{confirm: "削除しますか？"} %>  
+    <%= link_to "更新", edit_medicine_path(medicine), data: { remote: true } unless request.path.include?("record") %>
+  <% end %><hr>
+</p>
