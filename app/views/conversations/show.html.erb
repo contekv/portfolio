@@ -6,7 +6,7 @@
 <%= link_to "お薬手帳", medicine_path(@conversation.user) %><hr>
 
   <div id="messages">
-    <%= render partial: "message", collection: @messages %>
+    <%= render partial: "messages/message", collection: @messages %>
   </div>
   
   <%= render "form", conversation: @conversation, message: @message %>
