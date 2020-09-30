@@ -1,0 +1,140 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*****************************************
+共通設定
+******************************************/
+/* ページ全体設定*/
+html{
+	font-family: "ＭＳ Ｐゴシック","sans-serif";
+	color: black;
+	background-color: #f1f1e8;
+}
+
+/* すべてのブラウザ用に、デフォルトのマージンを取り除く。*/
+body {
+    margin: 0;
+}
+
+/* 各コンテンツにブロック要素を定義。*/
+article,
+aside,/*余談・補足情報*/
+details,/*詳細折りたたみ要素*/
+figcaption,/*図表のキャプション*/
+figure,/*図表*/
+footer,
+header,
+main,
+menu,
+nav,
+section,/*一つのセクションであることを示す*/
+summary/*概要明示要素*/ {
+  display: block;
+}
+
+/* Clearfix */
+.clearfix:after {
+    content:" ";
+    display:block;
+    clear:both;
+}
+
+/*リンク*/
+ul {
+	list-style: none;
+	text-align: center;
+	padding: 0;
+}
+
+.cp_link {
+	padding: 0.1em 0.3em;
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(32,106,93,1) 50%);
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+	color: #206a5d;
+}
+.cp_link:hover {
+	background-position: -100% 0;
+	color: #fff;
+	text-decoration: none;
+}
+
+/*****************************************
+パソコン設定(width1081px以上)
+******************************************/
+@media only screen and (min-width: 1081px)  {
+	/*全体*/
+	html{
+		font-size: 24px;
+		line-height: 54px;
+	}
+
+	main {
+		width: 960px;
+		margin: 5% auto;
+	}
+
+	.systemname1{
+		text-align:center;
+	}
+
+	.systemname2{
+		width: 50%;
+		height: auto;
+		margin-bottom: 3%;
+	}
+
+	.logo2{
+		width: 25%;
+		margin-left: 20%;
+		margin-right: 5%;
+	}
+
+	p{
+		float: right;
+		width: 50%;
+	}
+}
+
+/*****************************************
+モバイル設定(width1080px以下)
+******************************************/
+@media only screen and (max-width: 1080px) {
+	/*全体*/
+	html{
+		font-size: 36px;
+		line-height: 64px;
+	}
+
+	main {
+		width: 80%;
+		margin: 10% auto;
+	}
+
+	.systemname1{
+		text-align:center;
+	}
+
+	.systemname2{
+		width: 80%;
+		height: auto;
+	}
+
+	.logo1{
+		text-align:center;
+	}
+
+	.logo2{
+		width: 50%;
+	}
+
+	p{
+		text-align: center;
+	}
+
+	/*リンク*/
+	li{
+		margin: 24px 0;
+	}
+}

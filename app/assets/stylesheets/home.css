@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*****************************************
+共通設定
+******************************************/
+section{
+    padding-bottom: 20px;
+	border-bottom: solid 1px #808080;
+}
+
+/*見出し2*/
+h2 {
+	padding: 0.1em 0.3em;
+	border-left: 10px solid #bfdcae;
+}
+
+/*アイコン画像*/
+.deco{
+    float: left;
+}
+
+/*テキスト*/
+P{
+    width: 90%;
+    line-height: 44px;
+}
+
+/*****************************************
+パソコン設定(width1081px以上)
+******************************************/
+@media only screen and (min-width: 1081px)  {
+    /*アイコン画像*/
+    .deco{
+        width: 120px;
+        margin-right: 3%;
+    }
+}
+
+/*****************************************
+モバイル設定(width1080px以下)
+******************************************/
+@media only screen and (max-width: 1080px) {
+    /*アイコン画像*/
+    .deco{
+        width: 180px;
+        margin-right: 6%;
+    }
+}
