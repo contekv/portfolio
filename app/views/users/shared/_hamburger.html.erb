@@ -1,0 +1,47 @@
+<%= stylesheet_link_tag 'common2' %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('.hamburger').click(function() {
+			$(this).toggleClass('active');
+		
+			if ($(this).hasClass('active')) {
+				$('.globalMenuSp').addClass('active');
+		    } else {
+				$('.globalMenuSp').removeClass('active');
+			}
+		});
+	});
+</script>
+
+<div class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<menu class="globalMenuSp">
+  <ul class="globalMenuSpul">
+    <% if current_user.admin? %>
+      <li class="globalMenuSpli"><%= link_to "ホーム", admin_path(current_user) %></li>
+      <li class="globalMenuSpli"><%= link_to "ユーザー一覧", users_path %></li>
+      <li class="globalMenuSpli"><%= link_to "会話履歴", conversations_path %></li>
+      <li class="globalMenuSpli"><%= link_to "注文受付処理", orders_path %></li>
+      <li class="globalMenuSpli"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li class="globalMenuSpli"><%= link_to "ホーム", home_path(current_user) %></li>
+      <% if current_user.conversations.present? %>
+        <li class="globalMenuSpli"><%= link_to "Myドクター", conversation_path(current_user.conversations.ids) %></li>
+      <% else %>
+        <li class="globalMenuSpli"><%= render "users/shared/menu", conversation: @conversation, user: @user %></li>
+      <% end %>
+
+      <li class="globalMenuSpli"><%= link_to "注文", new_order_path %></li>
+      <li class="globalMenuSpli"><%= link_to "注文履歴", users_user_orders_path(current_user) %></li>
+      <li class="globalMenuSpli"><%= link_to "お薬手帳登録", medicine_path(current_user) %></li>
+      <li class="globalMenuSpli"><%= link_to "お薬手帳参照", record_medicine_path(current_user) %></li>
+      <li class="globalMenuSpli"><%= link_to "Myページ", user_path(current_user) %></li>
+      <li class="globalMenuSpli"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    <%end%>
+  </ul>
+</menu>

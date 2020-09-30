@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*テキスト*/
+section{
+	border-bottom: solid 1px #808080;
+}
+
+p{
+	margin: 0;;
+	line-height: 30px;
+}
+
+.username{
+	margin-top: 3%;
+	margin-bottom: 1%;
+	font-size: 30px;
+}
+
+span{
+	font-size: 15px;
+}
+
+/*アイコン画像*/
+.icon{
+	margin-right: 3%;
+	margin-bottom: 7px;
+    float: left;
+}
+
+.talk{
+    width: 90%;
+}
+
+/*フォーム*/
+.cp_iptxt{
+	margin-top: 5%;
+}

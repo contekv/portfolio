@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  layout "devise"
   before_action :correct_user, only: [:edit]
   before_action :sign_user
   before_action :authenticate_user!

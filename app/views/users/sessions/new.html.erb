@@ -1,27 +1,41 @@
-<h2>ログイン</h2>
+<%= stylesheet_link_tag 'common' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
-  <div class="field">
-    <%= f.label :email, "メールアドレス"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<main class="clearfix">
+  <h1 class="cp_h1title">ログイン</h1>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="cp_iptxt">
+      <div class="labeltext">
+        <%= f.label :email, "メールアドレス" %>
+      </div>
+      <label class="ef">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例）mail@gmail.com", type: "text"%>
+      </label>
+      
+      <div class="labeltext">
+        <%= f.label :password, "パスワード" %>
+      </div>
+      <label class="ef">
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "例）password", type: "text" %>
+      </label>
+
+      <div class="center">
+        <% if devise_mapping.rememberable? %>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "ログインを記憶する", type: "checkbox" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="center">
+      <%= f.button "ログイン", class: "cp_button07" %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-<%= link_to 'テストログイン', users_guest_sign_in_path, method: :post %>
-<%= render "users/shared/links" %>
+  
+  <ul>
+    <li><%= link_to "アカウント新規作成", new_user_registration_path, class: "cp_link" %></li>
+    <li><%= link_to "パスワードを忘れた方はこちらへ", new_user_password_path, class: "cp_link" %></li>
+    <li><%= link_to "トップへ戻る", root_path, class: "cp_link" %></li>
+  </ul>  
+</main>

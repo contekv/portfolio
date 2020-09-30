@@ -1,14 +1,91 @@
-<% provide(:title,"HOME" ) %>
-<h1>こんにちは  <%= @user.name %>  さん</h1>
+<%= stylesheet_link_tag 'home' %>
+<% provide(:title,"ホーム" ) %>
 
-<% if @user.conversations.present? %>
-  <p><%= button_to "myドクター", conversation_path(@conversation_id), method: :get %></p>
-<% else %>
-  <%= render "users/shared/form", conversation: @conversation, user: @user %>
-<% end %>
-<%= button_to "注文", new_order_path, method: :get %>
-<%= button_to "注文履歴", users_user_orders_path(@user), method: :get %>
-<%= button_to "お薬手帳　登録", medicine_path, method: :get %>
-<%= button_to "お薬手帳　参照", record_medicine_path(@user), method: :get %>
-<%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
-<%= button_to "プロフィール", user_path(@user), method: :get%>
+<main class="clearfix">
+  <%= render "users/shared/hamburger" %>
+  <div id="content">
+
+    <h1 class="cp_h1title">ホーム</h1>
+
+    <section>
+      <h2>Myドクター</h2>
+      <%= image_tag "mydr.gif", class: "deco", alt: "Myドクターロゴ" %>
+
+      <p>医療従事者と気軽にオンライン会話ができます。</p>
+
+      <div class="right">
+        <% if @user.conversations.present? %>
+          <%= button_to "使用する", conversation_path(@conversation_id), class: "cp_button08", method: :get %>
+        <% else %>
+          <%= render "users/shared/form", conversation: @conversation, user: @user, class: "cp_button08" %>
+        <% end %>
+      </div>
+    </section>
+
+    <section>
+      <h2>注文</h2>
+      <%= image_tag "order.gif", class: "deco", alt: "注文ロゴ" %>
+
+      <p>商品を注文後、店舗受取ができます。</p>
+
+      <div class="right">
+        <%= button_to "使用する", new_order_path, class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>注文履歴</h2>
+      <%= image_tag "order_history.gif", class: "deco", alt: "注文履歴ロゴ" %>
+
+      <p>過去に注文したことのある商品を確認できます。</p>
+
+      <div class="right">
+        <%= button_to "使用する", users_user_orders_path(@user), class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>お薬手帳登録</h2>
+      <%= image_tag "medicine_new.gif", class: "deco", alt: "お薬手帳登録ロゴ" %>
+
+      <p>服用されているお薬を登録することができます。</p>
+
+      <div class="right">
+        <%= button_to "使用する", medicine_path, class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>お薬手帳参照</h2>
+      <%= image_tag "medicine_view.gif", class: "deco", alt: "お薬手帳参照ロゴ" %>
+
+      <p>現在お薬手帳に登録されている薬を確認できます。</p>
+
+      <div class="right">
+        <%= button_to "使用する", record_medicine_path(@user), class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>Myページ</h2>
+      <%= image_tag "profile.gif", class: "deco", alt: "Myページロゴ" %>
+
+      <p>ユーザー名、メールアドレス、パスワード、アカウント画像を変更できます。</p>
+
+      <div class="right">
+        <%= button_to "使用する", user_path(@user), class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>ログアウト</h2>
+      <%= image_tag "logout.gif", class: "deco", alt: "ログアウトロゴ" %>
+
+      <p>ログアウトします。</p>
+
+      <div class="right">
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "cp_button08" %>
+      </div>
+    </section>
+  </div>
+</main>

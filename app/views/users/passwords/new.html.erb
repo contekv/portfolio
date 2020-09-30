@@ -1,16 +1,29 @@
-<h2>パスワードをお忘れですか？</h2>
+<%= stylesheet_link_tag 'common' %>
 
-<%= form_for(resource, as: resource_name, url: password_path, html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+<main class="clearfix">
+  <h1 class="cp_h1title">パスワードを忘れた方はこちら</h1>
+  入力頂いたメールアドレスに、パスワードを再発行するための画面のURLを送信します。
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  
+    <%= form_for(resource, as: resource_name, url: password_path, html: { method: :post }) do |f| %>
+      <div class="cp_iptxt">
+        <%= render "users/shared/error_messages", resource: resource %>
 
-  <div class="actions">
-    <%= f.submit "パスワード再発行へ" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+        <div class="labeltext">
+          <%= f.label :email, "メールアドレス" %>
+        </div>
+        <label class="ef">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "text", placeholder: "例）mail@gmail.com" %>
+        </label>
+  
+        <div class="center">
+          <%= f.button "送信", class: "cp_button07" %>
+        </div>
+      </div>
+    <% end %>
+  
+  <ul>
+    <li><%= link_to "アカウント新規作成", new_user_registration_path, class: "cp_link" %></li>
+    <li><%= link_to "トップへ戻る", root_path, class: "cp_link" %></li>
+  </ul>  
+</main>

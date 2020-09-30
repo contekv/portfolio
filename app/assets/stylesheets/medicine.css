@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*****************************************
+共通設定
+******************************************/
+/*テキスト*/
+section{
+	border-bottom: solid 1px #808080;
+}
+
+p{
+	margin: 0;
+	line-height: 30px;
+}
+
+.status1{
+	color: rgb(68, 68, 240);
+}
+
+.status2{
+	color: green;
+}
+
+.status3{
+	color: red;
+}
+
+.status4{
+	color: black;
+}
+
+/*****************************************
+パソコン設定(width1081px以上)
+******************************************/
+@media only screen and (min-width: 1081px)  {
+	.mediname{
+		margin-top: 3%;
+		font-size: 30px;
+	}
+	
+	.meditime{
+		font-size: 15px;
+	}
+}
+
+/*****************************************
+モバイル設定(width1080px以下)
+******************************************/
+@media only screen and (max-width: 1080px) {
+	.mediname{
+		margin-top: 3%;
+		font-size: 45px;
+	}
+	
+	.meditime{
+		margin-top: 1.5%;
+		font-size: 22.5px;
+	}
+}
