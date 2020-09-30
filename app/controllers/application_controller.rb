@@ -12,23 +12,35 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def sign_user
-    redirect_to root_path unless user_signed_in?
-  end
+    def sign_user
+      redirect_to root_path unless user_signed_in?
+    end
 
-  def correct_admin
-    redirect_to root_path unless current_user&.admin?
-  end
+    def correct_admin
+      redirect_to root_path unless current_user&.admin?
+    end
 
-  def correct_user
-    user = User.find(params[:id])
-    redirect_to root_path unless user == current_user
-  end
+    def correct_user
+      user = User.find(params[:id])
+      redirect_to root_path unless user == current_user
+    end
 
-  def configure_permitted_parameters
-    added_attrs = [:name, :email, :password, :avatar, :password_confirmation　]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-    devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
-  end
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    def conversation
+      if @user.conversations.present?
+        @conversation_id = @user.conversations.first.id
+      else
+        @conversation = Conversation.new
+      end
+    end
+
+    def configure_permitted_parameters
+      added_attrs = [:name, :email, :password, :avatar, :password_confirmation　]
+      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+      devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
+    end
 end

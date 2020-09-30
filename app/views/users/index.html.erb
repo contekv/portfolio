@@ -3,7 +3,13 @@
 
 <% @users.each do |user| %>
   <%= link_to user.name, user_path(user.id) %>
-  <%= render "/users/shared/avatar", user: user %><hr>
+  <%= link_to "お薬手帳", medicine_path(user.id) %>
+  <%= render "/users/shared/avatar", user: user %>
+  <% if user.conversations.present? %>
+    <p><%= link_to "myドクター", conversation_path(user.conversations.first.id) %></p>
+  <% else %>
+    <%= render "users/shared/form", conversation: @conversation, user: user %><hr>
+  <% end %>
 <% end %>
 
 <%= paginate @users %>

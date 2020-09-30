@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   root "tops#top"
-  resources :homes
-  resources :messages
-  resources :conversations
-  resources :admins
-  resources :orders
+  resources :homes, only: [:show]
+  resources :messages, only: [:create, :destroy]
+  resources :conversations, only: [:show, :index, :create]
+  resources :admins, only: [:show]
+  resources :orders, except: [:edit]
   resources :medicines do
     get :record, on: :member
   end
@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :users, only: :show do
       resources :orders, only: :index
     end
+  end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
   # ログイン、アカウント編集後、任意のページに推移させるための記述
@@ -36,7 +40,7 @@ Rails.application.routes.draw do
     put "/signup/create", to: "users/registrations#update", as: :update_user_registration
     delete "/signup/create", to: "users/registrations#destroy", as: :destroy_user_registration
     get "password", to: "devise/passwords#new", as: :new_user_password
-    post "password", to: "devise/passwords#create", as: :user_password
+    post "password", to: "users/passwords#create", as: :user_password
     get "password/edit", to: "devise/passwords#edit", as: :edit_user_password
     patch "password", to: "devise/passwords#update"
     put "password", to: "devise/passwords#update", as: :update_user_password
