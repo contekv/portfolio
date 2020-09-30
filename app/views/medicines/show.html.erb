@@ -7,4 +7,4 @@
 <% else %>
   <h3 class="text-center">お薬は登録されていません。</h3>
 <% end %>
-<%= render "form", current_user: @user, medicine: Medicine.new, value: "登録" if current_user != @admin %>
+<%= render "form", user: @user, medicine: @medicine if current_user != @admin %>

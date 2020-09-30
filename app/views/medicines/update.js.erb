@@ -1,3 +1,0 @@
-document.getElementById('medicine-<%= @medicine.id %>').innerHTML = '<%= j(render @medicine) %>'
-var form = document.getElementsByTagName('form')[0]
-form.outerHTML = '<%= j(render 'form', medicine: Medicine.new, value: '登録') %>'

@@ -17,6 +17,9 @@ class MedicinesController < ApplicationController
     redirect_to medicine_path(@medicine.user), alert: message
   end
 
+  def edit
+  end
+
   def update
     if @medicine.update(medicine_params)
       redirect_to medicine_path(@medicine.user), alert: "お薬が更新されました"
@@ -27,7 +30,7 @@ class MedicinesController < ApplicationController
 
   def destroy
     @medicine.destroy
-    redirect_back(fallback_location: medicine_path(@medicine.user), alert: "お薬が削除されました") 
+    redirect_back(fallback_location: medicine_path(@medicine.user), alert: "お薬が削除されました")
   end
 
   def record

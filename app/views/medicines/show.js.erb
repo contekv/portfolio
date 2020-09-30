@@ -1,2 +1,0 @@
-var form = document.getElementsByTagName('form')[0]
-form.outerHTML = '<%= j(render 'form', current_user: @user, medicine: @medicine, value: "登録") if current_user != @admin %>'
