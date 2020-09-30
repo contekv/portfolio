@@ -1,0 +1,2 @@
+$("#message_area").html("<%= escape_javascript(render(partial: "/conversations/messages", locals: { conversation: @conversation, messages: @messages })) %>");
+$("#message_form").html("<%= escape_javascript(render(partial: "/conversations/form", locals: { conversation: @conversation, message: @message })) %>");

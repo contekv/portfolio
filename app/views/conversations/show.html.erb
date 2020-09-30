@@ -8,7 +8,7 @@
   <div id="messages">
     <%= render partial: "messages/message", collection: @messages %>
   </div>
-  
+
   <%= render "form", conversation: @conversation, message: @message %>
 
 <% if current_user.admin? %>
