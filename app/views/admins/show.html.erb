@@ -1,6 +1,46 @@
-<h1><%=@user.name%>画面</h1>
+<%= stylesheet_link_tag 'home' %>
+<% provide(:title, "【管理者】ホーム") %>
 
-<%= link_to "ユーザー一覧", users_path %>
-<%= link_to "会話履歴", conversations_path %>
-<%= link_to "注文受付処理", orders_path %>
-<%= link_to "ログアウト",  destroy_user_session_path, method: :delete %>
+<%= render "users/shared/hamburger" %>
+
+<main class="clearfix">
+  <div id="content">
+    <h1 class="cp_h1title">【管理者】ホーム</h1>
+
+    <section>
+      <h2>ユーザー一覧</h2>
+      <%= image_tag "mng_user.gif", class: "deco", alt: "ユーザー一覧ロゴ" %>
+      <p>MediRoomに登録しているユーザーを確認できます。</p>
+      <div class="right">
+        <%= button_to "使用する", users_path, class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>会話履歴</h2>
+      <%= image_tag "mng_recode.gif", class: "deco", alt: "会話履歴ロゴ" %>
+      <p>ユーザーごとに従来の会話履歴を確認できます。</p>
+      <div class="right">
+        <%= button_to "使用する", conversations_path, class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>注文受付処理</h2>
+      <%= image_tag "order_confirm.gif", class: "deco", alt: "注文受付処理ロゴ" %>
+      <p>注文を受けた商品について、現状の確認と編集ができます。</p>
+      <div class="right">
+        <%= button_to "使用する", orders_path, class: "cp_button08", method: :get %>
+      </div>
+    </section>
+
+    <section>
+      <h2>ログアウト</h2>
+      <%= image_tag "logout.gif", class: "deco", alt: "ログアウトロゴ" %>
+      <p>ログアウトします。</p>
+      <div class="right">
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "cp_button08" %>
+      </div>
+    </section>
+  </div>
+</main>

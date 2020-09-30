@@ -1,25 +1,37 @@
-<h2>パスワード再発行</h2>
+<%= stylesheet_link_tag 'common' %>
 
-<%= form_for(resource, as: resource_name, url: password_path, html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+<main class="clearfix">
+  <h1 class="cp_h1title">パスワード再発行</h1>
 
-  <div class="field">
-    <%= f.label :password, "新しいパスワード" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: password_path, html: { method: :put }) do |f| %>
+    <div class="cp_iptxt">
+      <%= render "users/shared/error_messages", resource: resource %>
+      <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード（確認）" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="labeltext">
+        <%= f.label :password, "新しいパスワード" %>
+      </div>
+      <% if @minimum_password_length %>
+        (<%= @minimum_password_length %> 文字以上)
+      <% end %>
 
-  <div class="actions">
-    <%= f.submit "パスワードを変更する" %>
-  </div>
-<% end %>
+      <label class="ef">
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", type: "text", placeholder: "例）password" %>
+      </label>
+      <div class="labeltext">
+        <%= f.label :password_confirmation, "パスワード（確認）" %>
+      </div>
+      <label class="ef">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", type: "text", placeholder: "例）password" %>
+       </label>
+    </div>
+    <div class="center">
+      <%= f.button "再発行", class: "cp_button07" %>
+    </div>
+  <% end %>
 
-<%= render "users/shared/links" %>
+  <ul>
+    <li><%= link_to "アカウント新規作成", new_user_registration_path, class: "cp_link" %></li>
+    <li><%= link_to "トップへ戻る", root_path, class: "cp_link" %></li>
+  </ul>  
+</main>
