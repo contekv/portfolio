@@ -4,5 +4,4 @@ class Medicine < ApplicationRecord
   validates :content, presence: true, length: { maximum: 50 }
   scope :sorted_asc, -> { order(created_at: :asc) }
   scope :sorted_desc, -> { order(created_at: :desc) }
-  paginates_per 8
 end

@@ -1,30 +1,25 @@
 class UsersController < ApplicationController
-  layout "devise"
   before_action :correct_user, only: [:edit]
   before_action :sign_user
   before_action :authenticate_user!
+  before_action :set_user, only: [:edit, :show, :purge]
   before_action :correct_admin, only: [:index]
+  before_action :conversation, only: [:show]
+  USERS_LIMIT = 10
 
   def index
-    @users = User.not_admin.page(params[:page])
+    @users = User.not_admin.page(params[:page]).per(USERS_LIMIT)
+    @conversation = Conversation.new
   end
 
   def edit
-    @user = User.find_by(params[:id])
   end
 
   def show
-    @user = User.find(params[:id])
-    if @user.conversations.present?
-      @conversation_id = @user.conversations.first.id
-    else
-      @conversation = Conversation.new
-    end
   end
 
   def purge
-    user = User.find_by(id: params[:id])
-    user.avatar.purge
-    redirect_to user_path
+    @user.avatar.purge
+    redirect_to edit_user_registration_path, alert: "アカウント画像を削除しました"
   end
 end

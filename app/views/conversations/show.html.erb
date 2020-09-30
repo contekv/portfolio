@@ -5,18 +5,16 @@
 <h5><strong><%= link_to @conversation.user.name, user_path(@conversation.user.id) %></strong></h5>
 <%= link_to "お薬手帳", medicine_path(@conversation.user) %><hr>
 
-<div id='message_area'>
-<%= render "messages", conversation: @conversation, messages: @messages %>
-</div>
+  <div id="messages">
+    <%= render partial: "messages/message", collection: @messages %>
+  </div>
 
-<div id="message_form">
-<%= render "form", conversation: @conversation, message: @message %>
-</div>
+  <%= render "form", conversation: @conversation, message: @message %>
 
 <% if current_user.admin? %>
   <%= link_to "会話履歴", conversations_path %>
   <%= link_to "ユーザー一覧に戻る", users_path %>
-  <%= link_to "管理者HOME", admin_path(@admin)%>
+  <%= link_to "管理者HOME", admin_path(current_user)%>
 <% else %>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
 <% end %>

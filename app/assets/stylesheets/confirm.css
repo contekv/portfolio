@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*テキスト*/
+section{
+	border-bottom: solid 1px #808080;
+}
+
+/*****************************************
+パソコン設定(width1081px以上)
+******************************************/
+@media only screen and (min-width: 1081px)  {
+	p{
+		margin: 0;
+		line-height: 30px;
+	}
+	.mediname{
+		margin-top: 3%;
+		font-size: 30px;
+	}
+	
+	.meditime{
+		font-size: 15px;
+	}
+
+	/*セレクト*/
+	select{
+		font-size: large;
+	}
+}
+
+/*****************************************
+モバイル設定(width1080px以下)
+******************************************/
+@media only screen and (max-width: 1080px) {
+	p{
+		margin: 0;
+		line-height: 45px;
+	}
+	.mediname{
+		margin-top: 3%;
+		font-size: 45px;
+	}
+	
+	.meditime{
+		margin-top: 1.5%;
+		font-size: 22.5px;
+	}
+
+	/*セレクト*/
+	select{
+		font-size: 39px;
+	}
+}
