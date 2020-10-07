@@ -1,5 +1,4 @@
 class Users::OrdersController < ApplicationController
-  layout "devise"
   before_action :authenticate_user!
   ORDERS_LIMIT = 10
 

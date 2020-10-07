@@ -20,6 +20,6 @@ class UsersController < ApplicationController
 
   def purge
     @user.avatar.purge
-    redirect_to edit_user_registration_path, alert: "アカウント画像を削除しました"
+    redirect_to user_path, notice: "アカウント画像を削除しました"
   end
 end

@@ -19,6 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    user_path(@user.id)
+    redirect_to user_path(@user.id), notice: "変更"
   end
 end

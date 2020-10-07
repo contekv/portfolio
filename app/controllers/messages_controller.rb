@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  layout "devise"
   before_action :authenticate_user!
   before_action :set_message, only: [:destroy]
 
