@@ -1,6 +1,29 @@
-<h1>お薬手帳　編集</h1>	
+<%= stylesheet_link_tag 'medicine' %>
 
-<%= form_with model: @medicine do |f| %>	
-  <%= f.text_field :content, :placeholder => "お薬を入力してください" , :size => 50 %><br>	
-  <%= f.submit "更新" %>	
-<% end %> 
+<% provide(:title, "お薬手帳編集") %>
+<main class="clearfix">
+  <%= render "users/shared/hamburger" %>
+
+  <div id="content">
+	  <h1 class="cp_h1title">お薬手帳編集</h1>
+    <div class="cp_iptxt">
+
+      <%= form_with model: @medicine do |f| %>
+        <div class="labeltext">
+          <%= f.label :content, "薬名" %>
+        </div>
+        <label class="ef">
+          <%= f.text_field :content, :placeholder => "お薬を入力してください" , :size => 50, type: "text" %>
+        </label>
+        <div class="center">
+          <%= f.button "登録", data:{ confirm: "こちらの内容で更新しますか？" }, class: "cp_button07" %>
+      <% end %>
+
+      <ul>
+        <li><%= link_to "お薬手帳登録へ戻る", medicine_path(@medicine.user), class: "cp_link" %></li>
+        <li><%= link_to "お薬手帳参照へ戻る", record_medicine_path(@medicine.user), class: "cp_link" %></li>
+        <li><%= render "users/shared/home" %></li>
+      </ul>
+		</div>
+	</div>
+</main>
