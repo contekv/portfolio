@@ -72,7 +72,7 @@ summary/*概要明示要素*/ {
 	position: relative;
 	margin: 0 auto;
 }
-.cp_iptxt input[type='text'] {
+.cp_iptxt input{
 	box-sizing: border-box;
 	width: 100%;
 	padding: 0.3em;
@@ -82,7 +82,7 @@ summary/*概要明示要素*/ {
 	border: 1px solid #1b2538;
 	border-radius: 4px;
 }
-.ef input[type='text']:focus {
+.ef input:focus {
 	border: 1px solid #206a5d;
 	outline: none;
 	box-shadow: 0 0 5px 1px rgba(32,106,93, .5);
@@ -149,7 +149,6 @@ summary/*概要明示要素*/ {
 .cp_button07:focus {
 	color: #ffffff;
 }
-
  /*ボタン2*/
  .cp_button08 {
 	margin-top: 4%; 
@@ -214,7 +213,20 @@ ul {
 	text-align: center;
 	padding: 0;
   }
-
+.cp_link0 {
+	border-bottom: 2px solid;
+    padding: 0.1em 0.3em;
+	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(32,106,93,1) 50%);
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+	color: #206a5d;	
+}
+.cp_link0:hover {
+	background-position: -100% 0;
+	color: #fff;
+	text-decoration: none;
+}
 .cp_link {
 	padding: 0.1em 0.3em;
 	background-image: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(32,106,93,1) 50%);
@@ -233,6 +245,30 @@ ul {
 footer{
 	text-align: center;
 	font-size: 15px;
+}
+.notice {
+	color: white;
+	background-color: rgb(102, 145, 113);
+	text-align: center;
+	width: 100%;
+  }
+.alert {
+	color: white;
+	background-color: rgb(218, 85, 85);
+	text-align: center;
+	width: 100%;
+}
+.devise_error_messages {
+	color:  rgb(218, 85, 85);
+	text-align: center;
+	width: 100%;
+}
+.medi_record {
+	text-decoration: none;
+	color: rgb(108, 182, 108);
+}
+a:hover { 
+	text-decoration: underline;
 }
 
 /*****************************************
@@ -315,7 +351,7 @@ footer{
 	}
 
 	/*フォーム*/
-	.cp_iptxt input[type='text'] {
+	.cp_iptxt input {
 		font: 15px/24px sans-serif
 	}
 	.cp_iptxt {
@@ -323,6 +359,9 @@ footer{
 	}
 	.labeltext{
 		margin: 2% auto -4%;
+	}
+	input, textarea {
+		font: 15px/24px sans-serif
 	}
 
 	 /*ボタン1*/
@@ -514,7 +553,7 @@ footer{
 	}
 
 	/*フォーム*/
-	.cp_iptxt input[type='text'] {
+	.cp_iptxt input {
 		font: 22px/36px sans-serif
 	}
 	.cp_iptxt {
@@ -522,6 +561,9 @@ footer{
 	}
 	.labeltext{
 		margin: 2% auto -1%;
+	}
+	input, textarea {
+		font: 22px/36px sans-serif
 	}
 
 	/*ボタン1*/

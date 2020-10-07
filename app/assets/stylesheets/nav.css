@@ -6,36 +6,31 @@ nav.cp_navi *, nav.cp_navi *:after, nav.cp_navi *:before {
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-nav.cp_navi a {
+nav.pagination a {
 	text-decoration: none;
+	color: #000;
 }
-nav.cp_navi {
+nav.pagination {
 	margin: 2em 0;
 	text-align: center;
+	letter-spacing: 0.5em;
 }
-.cp_navi .cp_pagination {
-	display: inline-block;
-	background-color: #fff;
+.pagination span{
+  color:#206a5d;
 }
-.cp_navi .cp_pagenum {
-	display: block;
-	float: left;
-	transition: 400ms ease;
-	letter-spacing: 0.1em;
-	color: #595959;
+
+.pagination span a:hover {
+	color:#f1eded;
+  }
+
+.pagination span:hover,
+.pagination.current {
+	color: #f1eded;
+	background-color:#bfdcae;
 }
-.cp_navi .cp_pagenum:hover,
-.cp_navi .cp_pagenum.current {
-	color: #ffffff;
-	background-color: #206a5d;
-}
-.cp_navi .cp_pagenum.prev:hover,
-.cp_navi .cp_pagenum.next:hover {
-	color: #206a5d;
-	background-color: transparent;
-}
+
 @media only screen and (min-width: 1081px) {
-	.cp_navi .cp_pagination {
+	.pagination {
 		height: 50px;
 		margin-top: 50px;
 		padding: 0 10px;
@@ -55,9 +50,8 @@ nav.cp_navi {
 	.cp_navi .cp_pagination{
 		border-radius: 25px;
 	}
-	.cp_navi .cp_pagenum {
+	.pagination {
 		font-size: 0.8em;
-		display: none;
 		padding: 0 15px;
 	}
 	.cp_navi .cp_pagenum.prev,

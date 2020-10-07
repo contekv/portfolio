@@ -14,19 +14,20 @@ p{
 	line-height: 30px;
 }
 
-.status1{
-	color: rgb(68, 68, 240);
+.status_waiting{
+	
+	color: rgb(22, 18, 223);
 }
 
-.status2{
-	color: green;
+.status_running{
+	color: rgb(4, 99, 28);
 }
 
-.status3{
+.status_arrival{
 	color: red;
 }
 
-.status4{
+.status_completed{
 	color: black;
 }
 

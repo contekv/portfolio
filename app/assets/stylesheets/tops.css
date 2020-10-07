@@ -59,7 +59,23 @@ ul {
 	color: #fff;
 	text-decoration: none;
 }
+.notice {
+	color: white;
+	background-color: rgb(102, 145, 113);
+	text-align: center;
+	width: 100;
+  }
 
+.alert {
+	color: white;
+	background-color: rgb(218, 85, 85);
+	text-align: center;
+}
+.devise_error_messages {
+	color: white;
+	background-color: rgb(218, 85, 85);
+	text-align: center;
+}
 /*****************************************
 パソコン設定(width1081px以上)
 ******************************************/
@@ -96,7 +112,6 @@ ul {
 		width: 50%;
 	}
 }
-
 /*****************************************
 モバイル設定(width1080px以下)
 ******************************************/

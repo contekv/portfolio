@@ -62,7 +62,7 @@ summary/*概要明示要素*/ {
 	position: relative;
 	margin: 0 auto;
 }
-.cp_iptxt input[type='text'] {
+.cp_iptxt input{
 	box-sizing: border-box;
 	width: 100%;
 	padding: 0.3em;
@@ -72,17 +72,15 @@ summary/*概要明示要素*/ {
 	border: 1px solid #1b2538;
 	border-radius: 4px;
 }
-.ef input[type='text']:focus {
+.ef input:focus {
 	border: 1px solid #206a5d;
 	outline: none;
 	box-shadow: 0 0 5px 1px rgba(32,106,93, .5);
 }
-
 /*中央揃え*/
 .center{
 	text-align:center;
  }
-
  /*ボタン*/
 .cp_button07 {
 	margin-top: 4%; 
@@ -165,6 +163,20 @@ ul {
 	color: #fff;
 	text-decoration: none;
 }
+.notice {
+	color: white;
+	background-color: rgb(102, 145, 113);
+	text-align: center;
+  }
+.alert {
+	color: white;
+	background-color: rgb(218, 85, 85);
+	text-align: center;
+}
+.devise_error_messages {
+	color:  rgb(218, 85, 85);
+	text-align: center;
+}
 
 /*****************************************
 パソコン設定(width1081px以上)
@@ -218,10 +230,27 @@ ul {
 	.labeltext{
 		margin: 2% auto -4%;
 	}
+	input, textarea {
+		font: 15px/24px sans-serif
+	}
 
 	 /*ボタン*/
 	.cp_button07 {
 		font-size: 18px;
+	}
+	.notice {
+		color: white;
+		background-color: rgb(102, 145, 113);
+		text-align: center;
+	  }
+	.alert {
+		color: white;
+		background-color: rgb(218, 85, 85);
+		text-align: center;
+	}
+	.devise_error_messages {
+		color:  rgb(218, 85, 85);
+		text-align: center;
 	}
 }
 
@@ -287,9 +316,27 @@ ul {
 	.labeltext{
 		margin: 2% auto -1%;
 	}
+	input, textarea {
+		font: 22px/36px sans-serif
+	}
+	
 
 	/*ボタン*/
 	.cp_button07 {
 		font-size: 27px;
+	}
+	.notice {
+		color: white;
+		background-color: rgb(102, 145, 113);
+		text-align: center;
+	  }
+	.alert {
+		color: white;
+		background-color: rgb(218, 85, 85);
+		text-align: center;
+	}
+	.devise_error_messages {
+		color:  rgb(218, 85, 85);
+		text-align: center;
 	}
 }
