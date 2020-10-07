@@ -45,5 +45,6 @@ Rails.application.routes.draw do
     patch "password", to: "devise/passwords#update"
     put "password", to: "devise/passwords#update", as: :update_user_password
     post "users/guest_sign_in", to: "users/sessions#test_guest"
+    post "users/admin_sign_in", to: "users/sessions#admin_login"
   end
 end
