@@ -1,8 +1,0 @@
-<strong><%= order.content %></strong>
-<%= order.order_type_i18n %>
-<small><%= l order.created_at, format: :short %></small>
-
-<% if order.user == current_user %>
-  <%= link_to "キャンセル", order, method: :delete, data: {confirm: "キャンセルしますか？"} unless order.completed? %><br> 
-  <%= render "orders/reorder", order: order, user: order.user %>
-<% end %><hr>
