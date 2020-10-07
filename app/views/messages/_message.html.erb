@@ -1,15 +1,26 @@
-<% if message.present? %>
+ <% if message.present? %>
+    <div id="message-<%= message.id %>">
 
-  <p id="message-<%= message.id %>">
-    <strong><%= message.content %></strong>
-    <small><%= l message.created_at, format: :short %></small><br>
-    <small>by<strong><%= message.user.name %></strong></small>
+      <section>
+        <p class="username"><%= message.user.name %>  <%= link_to "お薬手帳", record_medicine_path(message.user), class: "medi_record" unless message.user.admin? %>
+        <span><%= l message.created_at, format: :short %></span></p>
+      
+        <%= render "/users/shared/avatar", class: "icon", user: message.conversation.user unless message.user.admin? %>
+	      <%= image_tag("mydr.gif", size: "100x100", class: "icon") if message.user.admin %>
 
-	  <%= link_to "削除", message, method: :delete, data:{confirm: "コメントを削除しますか？", remote: true } if message.user == current_user %>
-	  <%= render "/users/shared/avatar", user: message.conversation.user unless message.user.admin? %>
-	  <%= image_tag "admin.png", size: "50x50" if message.user.admin %>
-  </p>
+        <div class="talk">
+          <%= message.content %>
+        </div>
 
+        <div class="right">
+          <% if message.user == current_user %>
+            <%= button_to "削除", message, method: :delete, remote: true, data:{confirm: "コメントを削除しますか？"}, class: "cp_button08" %>
+          <% else %>
+            <%= link_to "削除", message, method: :delete, class: "cp_button09" %> 
+          <% end %>
+        </div>
+      </section>
+    </div>
 <% else %>
-  <h3 class="text-center">まだ会話は行われていません</h3>
-<% end %> 
+  <h3>まだ会話は行われていません</h3>
+<% end %>
