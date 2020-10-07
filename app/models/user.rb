@@ -4,10 +4,12 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :medicines,  dependent: :destroy
   has_many :orders, dependent: :destroy
+  validates :name, :email, presence: true
+  validates :name, :email, uniqueness: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  scope :admin, -> { find_by(name: "管理者") }
-  scope :not_admin, -> { where.not(name: "管理者") }
+  scope :admin, -> { find_by(name: "医療従事者") }
+  scope :not_admin, -> { where.not(name: "医療従事者") }
   scope :sorted_desc, -> { order(created_at: :desc) }
 
   def self.secure_guest(email)
