@@ -1,0 +1,13 @@
+<section>
+  <p class="mediname"><%= order.content %></p>
+  <p class="meditime"><%= l order.created_at, format: :short %></p>
+  <p class="status_<%= order.order_type %>"><%= order.order_type_i18n %></p>
+
+  <% if order.user == current_user %>
+  
+    <div class="right">
+      <%= render "users/orders/reorder", order: order, user: order.user %>
+      <%= button_to "キャンセル", order, method: :delete, data: {confirm: "キャンセルしますか？"}, class: "cp_button08" unless order.completed? %>
+    </div>
+  <% end %>
+</section>

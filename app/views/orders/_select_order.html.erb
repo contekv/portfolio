@@ -1,3 +1,5 @@
-<%= link_to order.content, users_user_orders_path(order.user) %><br>
-<%= link_to order.user.name, user_path(order.user) %>
-<%= render "select", order: order %>
+<p>薬名：<%= order.content %></p>
+<p>ユーザー名：<%= order.user.name %> (<%= link_to "注文履歴", users_user_orders_path(order.user), class: "medi_record" %>) </p>
+<div class="right">
+  <%= render "select", order: order %>
+</div>

@@ -1,4 +1,4 @@
 <%= form_with model: order do |f| %>
   <%= f.select :order_type, Order.order_types_i18n.invert %>
-<%= f.submit "変更", data:{ confirm: "ステータスを更新しますか？" }%>
+  <%= f.button "変更", class: "cp_button08", data:{ confirm: "ステータスを変更しますか？" }%>
 <% end %>
