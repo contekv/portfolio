@@ -107,9 +107,13 @@ ul {
 		margin-right: 5%;
 	}
 
-	p{
+	.sentence{
 		float: right;
 		width: 50%;
+	}
+	.p{
+		width:100;
+	
 	}
 }
 /*****************************************
@@ -144,10 +148,13 @@ ul {
 		width: 50%;
 	}
 
-	p{
+	.sentence{
 		text-align: center;
 	}
-
+	.p{
+		width:100;
+	
+	}
 	/*リンク*/
 	li{
 		margin: 24px 0;
