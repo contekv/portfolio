@@ -1,17 +1,38 @@
-<h1>ユーザー一覧</h1>
-<h2>こんにちは <%= current_user.name %>さん</h2>
+<%= stylesheet_link_tag 'mydr' %>
 
-<% @users.each do |user| %>
-  <%= link_to user.name, user_path(user.id) %>
-  <%= link_to "お薬手帳", medicine_path(user.id) %>
-  <%= render "/users/shared/avatar", user: user %>
-  <% if user.conversations.present? %>
-    <p><%= link_to "myドクター", conversation_path(user.conversations.first.id) %></p>
-  <% else %>
-    <%= render "users/shared/form", conversation: @conversation, user: user %><hr>
-  <% end %>
-<% end %>
+<% provide(:title, "【管理者】ユーザー一覧") %>
+<%= render "users/shared/hamburger" %>
 
-<%= paginate @users %>
-<%= link_to "会話履歴", conversations_path %>
-<%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+<main class="clearfix">
+  <div id="content">
+	  <h1 class="cp_h1title">【管理者】ユーザー一覧</h1>
+
+      <% @users.each do |user| %>
+        <section>      
+          <p class="username"><%= user.name %></p>
+          <%= render "/users/shared/avatar", user: user %>
+          <div class="clearfix">
+	          <div class="right">
+              <%= button_to "Myページ", user_path(user.id), method: :get, class: "cp_button08" %>
+  
+              <% if user.conversations.present? %>
+                <%= button_to "Myドクター", conversation_path(user.conversations.first.id), method: :get, class: "cp_button08" %>
+              <% else %>
+                <%= render "users/shared/menu", conversation: @conversation, user: user, class: "cp_button08" %>
+              <% end %>
+            
+              <%= button_to "お薬手帳参照", record_medicine_path(user), method: :get, class: "cp_button08" %>
+            </div>
+          </div>
+        </section>
+      <% end %>
+      <%= paginate @users %>
+
+      <div class="center">
+	      <ul>
+          <li><%= link_to "会話履歴", conversations_path, class: "cp_link" %></li>
+          <li><%= link_to "ホームへ戻る", admin_path(current_user), class: "cp_link" %></li>
+        </ul>
+	    </div>
+  </div>
+</main>

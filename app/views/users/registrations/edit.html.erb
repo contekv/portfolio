@@ -1,50 +1,74 @@
-<h2>プロフィール編集(<%= @user.name %>)</h2>
+<%= stylesheet_link_tag 'profile' %>
 
-<% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar.variant(resize:'100x100') %>
-  <%= link_to 'アカウント画像を削除', purge_user_path(@user.id),　method: :get, data:{confirm: "アカウント画像を削除しますか？"} %>
-<% end %>
+<% provide(:title, "Myページ編集") %>
+<main class="clearfix">
+  <%= render "users/shared/hamburger" %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+  <div id="content">
+	  <h1 class="cp_h1title">Myページ編集</h1>
 
-  <div class="field">
-    <%= f.label :name, "ユーザー名" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="center">
+		  <ul>
+        <% if @user.avatar.attached? %>
+          <li><%= image_tag(@user.avatar.variant(resize:'100x100'), class: "icon") %></li>
+          <li><%= link_to '画像削除', purge_user_path(@user.id),　method: :get, data:{confirm: "アカウント画像を削除しますか？"}, class: "cp_link" %></li>
+        <% else %>
+          <li><%= image_tag("icon.gif", size: "100x100", class: "icon") %></li>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+          <li><%= f.label :avatar, "画像選択", class: "cp_link0" %></li>
+          <li class="avatar_form"><%= f.file_field :avatar, autofocus: true, autocomplete: "avatar" %></li>
+      </ul>
+    </div>
 
-   <div class="field">
-    <%= f.label :password, "パスワード" %>
+    <div class="cp_iptxt">
+      <div class="labeltext">
+        <%= f.label :name, "ユーザー名" %>
+      </div>
+      <label class="ef">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "例）Tarou Tanaka", type: "text" %>
+      </label>
+
+      <div class="labeltext">
+        <%= f.label :email, "メールアドレス" %>
+      </div>
+      <label class="ef">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例）mail@gmail.com", type: "text" %>
+      </label>
+  
+      <div class="labeltext">
+        <%= f.label :password, "パスワード" %>
+      </div>
       <% if @minimum_password_length %>
-        <%= @minimum_password_length%> 文字以上(パスワードを変更しない場合は空白のまま)
-      <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= @minimum_password_length%> 文字以上
+        (変更しない場合は空白のまま)
+      <% end %>
+      <label class="ef">
+        <%= f.text_field :password, autocomplete: "new-password", placeholder: "例）password", type: "password" %>
+      </label>
+
+      <div class="labeltext">
+        <%= f.label :password_confirmation, "パスワード(変更の確認)" %>
+      </div>
+      <label class="ef">
+        <%= f.text_field :password_confirmation, autocomplete: "new-password", placeholder: "例）password", type: "password" %>
+      </label>
+    
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <ul>
+        <li><%= f.button "更新", data:{confirm: "アカウント情報を変更しますか？ パスワード変更の場合は更新後、再ログインしていただく必要があります。"}, class: "cp_button07" %></li>
+      <% end %>
+      </ul>
+      <ul>
+        <li><%= link_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除してもよろしいですか?" }, method: :delete, class: "cp_link" %></li>
+        <li><%= link_to "プロフィールへ戻る", user_path(@user), class: "cp_link" %></li>
+        <li><%= link_to "ホームへ戻る", home_path(@user), class: "cp_link" %></li>
+      </ul>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード(変更の確認)"%><br/>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :avatar, "アカウント画像" %><br />
-    <%= f.file_field :avatar, autofocus: true, autocomplete: "avatar" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "変更", data:{confirm: "アカウント情報を変更しますか？"}%>
-  </div>
-<% end %>
-
-<p><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当にアカウントを削除してもよろしいですか?（復元は致しかねますのでご注意下さい）" }, method: :delete %></p>
-
-<%= link_to "戻る", :back %>
+</main>

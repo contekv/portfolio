@@ -4,7 +4,7 @@
   <div class="systemname1">
     <%= image_tag "Logo_TextOnly.gif", class: "systemname2", alt: "MediRoom" %>
   </div>
-
+  
   <p>医療をもっと身近に
   <br>オンラインで医療とつながる時代へ</p>
 
@@ -14,7 +14,8 @@
   
   <ul>
     <li><%= link_to "アカウント新規作成", new_user_registration_path, class: "cp_link" %></li>
-    <li><%= link_to "ゲストログイン", users_guest_sign_in_path, class: "cp_link", method: :post %></li>
+    <li><%= link_to "医療従事者ログイン", users_admin_sign_in_path, class: "cp_link", method: :post %></li>
+    <li><%= link_to "ゲストログイン",  users_guest_sign_in_path, class: "cp_link", method: :post %></li>
     <li><%= link_to "ログイン", new_user_session_path, class: "cp_link" %></li>
     <li><%= link_to "パスワードを忘れた方はこちら", new_user_password_path, class: "cp_link" %></li>
   </ul>
