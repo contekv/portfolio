@@ -46,8 +46,11 @@ summary/*概要明示要素*/ {
 
  /*右揃え*/
 .right{
-	text-align:right;
-	
+	display: flex; /*横並べ*/
+    justify-content: flex-end; /*右寄せ*/
+	margin-bottom: 0.5%;
+	margin-top: 10%;
+
  }
 
 /*見出し1*/
@@ -152,6 +155,7 @@ summary/*概要明示要素*/ {
 }
  /*ボタン2*/
  .cp_button08 {
+	margin: 0px 3px;
 	margin-top: 4%; 
 	position: relative;
 	z-index: 1;
@@ -207,7 +211,6 @@ summary/*概要明示要素*/ {
 .cp_button08:active {
 	opacity: 0.5;
 }
-
 /*リンク*/
 ul {
 	list-style: none;
@@ -576,8 +579,8 @@ a:hover {
 
 	/*ボタン2*/
 	.cp_button08 {
-		font-size: 27px;
-		width: 210px;
+		font-size: 15px;
+		width: 100px;
 	}
 	.cp_button09 {
 		font-size: 0px;
