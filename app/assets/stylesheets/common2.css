@@ -47,6 +47,7 @@ summary/*概要明示要素*/ {
  /*右揃え*/
 .right{
 	text-align:right;
+	
  }
 
 /*見出し1*/
@@ -254,12 +255,12 @@ footer{
   }
 .alert {
 	color: white;
-	background-color: rgb(218, 85, 85);
+	background-color: rgb(221, 122, 122);
 	text-align: center;
 	width: 100%;
 }
 .devise_error_messages {
-	color:  rgb(218, 85, 85);
+	color:  rgb(221, 122, 122);
 	text-align: center;
 	width: 100%;
 }

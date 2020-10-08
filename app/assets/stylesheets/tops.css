@@ -68,12 +68,12 @@ ul {
 
 .alert {
 	color: white;
-	background-color: rgb(218, 85, 85);
+	background-color: rgb(221, 122, 122);
 	text-align: center;
 }
 .devise_error_messages {
 	color: white;
-	background-color: rgb(218, 85, 85);
+	background-color: rgb(221, 122, 122);
 	text-align: center;
 }
 /*****************************************
