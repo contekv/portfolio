@@ -1,0 +1,7 @@
+<% if current_user.admin? %>
+  <li><%= link_to "戻る", 'javascript:history.back()', class: "cp_link" if request.path.include?("conversations/show") %></li>
+  <li><%= link_to "戻る", :back, class: "cp_link" unless request.path.include?("conversations/show") %></li>
+  <li><%= link_to "ホームへ戻る", admin_path(current_user), class: "cp_link" %></li>
+<% else %>
+  <li><%= link_to "ホームへ戻る", home_path(current_user), class: "cp_link" %></li>
+<% end %>

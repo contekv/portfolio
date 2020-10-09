@@ -1,5 +1,12 @@
-<%= form_with model: medicine do |f| %>	
-  <%= f.text_field :content, :placeholder => "登録したいお薬を入力してください", :size => 50 %>
-  <%= f.hidden_field :user_id, value: user.id %><br>
-  <%= f.submit "登録" %>
-<% end %> 
+<div class="labeltext">
+  <label class="ef">
+    <%= form_with model: medicine do |f| %>
+      <%= f.label :name, "薬名" %>	
+      <%= f.text_field :content, :placeholder => "例）タミフル", :size => 50, type: "text" %>
+      <%= f.hidden_field :user_id, value: user.id %>
+      <div class="center">
+        <%= f.button "登録", data:{ confirm: "こちらの内容で登録しますか？" }, class: "cp_button07" %>
+      </div>
+    <% end %>
+  </label>
+</div>

@@ -1,9 +1,24 @@
-<h1><%=@user.name%>さんの注文履歴</h1>
+<%= stylesheet_link_tag 'medicine' %>
+<% provide(:title, "注文履歴") %>
 
-<% if @orders.present? %>
-  <%= render partial: "orders/order", collection: @orders %>
-  <%= paginate @orders %>
-<% else %>
-  <h3 class="text-center">注文はされていません。</h3>
-<% end %>
-<%= link_to "注文　新規", new_order_path unless current_user.admin? %>
+<main class="clearfix">
+  <%= render "users/shared/hamburger" %>
+    <div id="content">
+      <h1 class="cp_h1title">注文履歴</h1>
+
+        <% if @orders.present? %>
+          <%= render partial: "users/orders/order", collection: @orders %>
+
+          <%= paginate @orders %>
+        <% else %>
+          <h3 class="text-center">注文はされていません</h3>
+        <% end %>
+      
+      <div class="center">
+        <ul>
+          <li><%= link_to "注文へ戻る", new_order_path, class: "cp_link" unless current_user.admin? %></li>
+          <li><%= render "users/shared/home" %></li>
+        </ul>
+      </div>
+    </div>
+</main>

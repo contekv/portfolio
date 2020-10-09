@@ -1,7 +1,11 @@
-<strong><%= medicine.content %></strong>
-<small><%= l medicine.created_at, format: :short %></small>
+<section>
+  <p class="mediname"><%= medicine.content %></p>
+  <p class="meditime"><%= l medicine.created_at, format: :short %></p>
 
-<% if medicine.user == current_user %>
-  <%= link_to "削除", medicine, method: :delete, data:{confirm: "削除しますか？"} %>
-  <%= link_to "編集", edit_medicine_path(medicine) unless request.path.include?("record") %>  
-<% end %><hr> 
+  <% if medicine.user == current_user %>
+    <div class="right">
+      <%= button_to "編集", edit_medicine_path(medicine), method: :get, class: "cp_button08" unless request.path.include?("record") %>
+      <%= button_to "削除", medicine, method: :delete, data:{confirm: "削除しますか？"}, class: "cp_button08" %> 
+    </div>
+  <% end %>
+</section>

@@ -1,4 +1,4 @@
-User.create!(name: "管理者",
+User.create!(name: "医療従事者",
    email: "admin@example.jp",
    password: "1111111",
    password_confirmation: "1111111",

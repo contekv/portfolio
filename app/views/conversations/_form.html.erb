@@ -1,5 +1,9 @@
-<%= form_with(model: message, remote: true) do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 150 %>
-  <%= f.hidden_field :conversation_id, value: conversation.id %>
-  <%= f.submit "送信" %>
-<% end %>
+<label class="ef">
+  <div class="center">
+    <%= form_with model: message do |f| %>
+      <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 150, type: "text" %>
+      <%= f.hidden_field :conversation_id, value: conversation.id %>
+      <%= f.button "送信", class: "cp_button07" %>
+    <% end %>
+  </div>
+ </label>

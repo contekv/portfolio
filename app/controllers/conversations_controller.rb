@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-  layout "devise"
   before_action :authenticate_user!
   before_action :correct_admin, only: [:index]
   MESSAGE_LIMIT = 10

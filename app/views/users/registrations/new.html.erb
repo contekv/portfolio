@@ -1,7 +1,5 @@
 <%= stylesheet_link_tag 'common' %>
-<header>
-  <%= link_to image_tag("Logo.gif", id: "logoimg", alt: "MediRoom"), root_path(current_user) %>
-</header>
+
 <% provide(:title, "アカウント新規作成" ) %>
 
 <main class="clearfix">
@@ -35,14 +33,14 @@
         <% end %>
       </div>
       <label class="ef">
-        <%= f.password_field :password, autocomplete: "new-password", type: "text", placeholder: "例）password" %>
+        <%= f.text_field :password, autocomplete: "new-password", type: "password", placeholder: "例）password" %>
       </label>
 
       <div class="labeltext">
         <%= f.label :password_confirmation, "パスワード(確認)" %><br/>
       </div>
       <label class="ef">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", type: "text", placeholder: "例）password" %>
+        <%= f.text_field :password_confirmation, autocomplete: "new-password", type: "password", placeholder: "例）password" %>
       </label>
 
       <div class="center">

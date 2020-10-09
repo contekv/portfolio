@@ -1,11 +1,24 @@
-<h1>お薬手帳　参照</h1>
+<%= stylesheet_link_tag 'medicine' %>
 
-<% if @medicines.present? %>
-  <%= render partial: "medicine", collection: @medicines %>
+<% provide(:title, "お薬手帳参照") %>
+<main class="clearfix">
+  <%= render "users/shared/hamburger" %>
 
-  <%= paginate @medicines %>
+  <div id="content">
+	  <h1 class="cp_h1title">お薬手帳参照</h1>
 
-  <%= link_to "お薬手帳", medicine_path %>
-<% else %>
-  <h3 class="text-center">お薬の履歴はありません。</h3>
-<% end %>
+    <% if @medicines.present? %>
+      <%= render partial: "medicine", collection: @medicines %>
+      <%= paginate @medicines %>
+    <% else %>
+      <h3 class="text-center">お薬の履歴はありません。</h3>
+    <% end %>
+
+    <div class="center">
+      <ul>
+          <li><%= link_to "お薬手帳登録", medicine_path(@user), class: "cp_link" unless current_user.admin? %></li>
+          <li><%= render "users/shared/home" %></li>
+      </ul>
+    </div>
+	</div>
+</main>

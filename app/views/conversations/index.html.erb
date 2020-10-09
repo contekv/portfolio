@@ -1,16 +1,35 @@
-<h1>会話履歴</h1>
+<%= stylesheet_link_tag 'mydr' %>
+<% provide(:title, "【管理者】会話履歴") %>
+<%= render "users/shared/hamburger" %>
 
-<% @all_convers.each do |conver| %>
-  <% if conver.messages.present? %>
-    <%= link_to conversation_path(conver.id) do %>
-      <%= conver.messages.sorted_desc.first.content%>
-    <% end %> 
-    
-    <%= conver.user.name %>
-    <%= render "/users/shared/avatar", user: conver.user %><hr>
-  <% end %>
-<% end %>
+<main class="clearfix">
+  <div id="content">
+	  <h1 class="cp_h1title">【管理者】会話履歴</h1>
 
-<%= paginate @all_convers %>
-<%= link_to "ユーザー一覧に戻る", users_path %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <% @all_convers.each do |conver| %>
+      <section>
+        <p class="username"><%= conver.user.name %></p>
+        <%= render "/users/shared/avatar", user: conver.user %>
+
+        <% if conver.messages.present? %>
+          <div class="talk">
+            <%= conver.messages.sorted_desc.first.content %>
+          </div>
+        <% end %>
+        <div class="clearfix">
+				  <div class="right">
+            <%= button_to "Myドクター", conversation_path(conver.id), method: :get, class: "cp_button08" %>
+            <%= button_to "お薬手帳参照", record_medicine_path(conver.user), method: :get, class: "cp_button08" %>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+    <div class="center">
+	    <ul>
+        <%= paginate @all_convers %>
+        <li><%= link_to "ユーザー一覧に戻る", users_path, class: "cp_link" %></li>
+        <li><%= link_to "ホームへ戻る", admin_path(current_user), class: "cp_link" %></li>
+      </ul>
+		</div>
+</main>

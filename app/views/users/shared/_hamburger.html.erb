@@ -1,17 +1,18 @@
 <%= stylesheet_link_tag 'common2' %>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$('.hamburger').click(function() {
-			$(this).toggleClass('active');
+		$(function() {
+			$('.hamburger').click(function() {
+				$(this).toggleClass('active');
 		
-			if ($(this).hasClass('active')) {
-				$('.globalMenuSp').addClass('active');
-		    } else {
-				$('.globalMenuSp').removeClass('active');
-			}
+				if ($(this).hasClass('active')) {
+					$('.globalMenuSp').addClass('active');
+				} else {
+					$('.globalMenuSp').removeClass('active');
+				}
+			});
 		});
-	});
 </script>
 
 <div class="hamburger">

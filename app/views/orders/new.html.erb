@@ -1,2 +1,18 @@
-<h1>新規注文</h1>
-<%= render "form", order: @order %>
+<%= stylesheet_link_tag 'medicine' %>
+<% provide(:title, "注文") %>
+
+<main class="clearfix">
+  <%= render "users/shared/hamburger" %>
+  <div id="content">
+    <h1 class="cp_h1title">注文</h1>
+    注文する薬名を入力ください
+
+    <div class="cp_iptxt">
+      <%= render "form", order: @order, type: "text"%>
+      <div class="center">
+        <ul>
+          <li><%= link_to "ホームへ戻る", home_path(current_user), class: "cp_link" %></li>
+        </ul>
+      </div>
+    </div>
+</main>
