@@ -38,6 +38,7 @@ end
 group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -50,6 +51,7 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "letter_opener"
   gem "letter_opener_web"
+  gem 'spring-commands-rspec'
 end
 
 group :test do
