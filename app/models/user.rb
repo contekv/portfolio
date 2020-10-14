@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :medicines,  dependent: :destroy
   has_many :orders, dependent: :destroy
   validates :name, :email, presence: true
-  validates :name, :email, uniqueness: true
+  validates :name, :email, uniqueness: { case_sensitive: false }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   scope :admin, -> { find_by(name: "医療従事者") }
