@@ -1,5 +1,6 @@
 FactoryBot.define do
-  factory :conversation do
+  factory :order do
+    content { content }
     association :user
   end
 end
