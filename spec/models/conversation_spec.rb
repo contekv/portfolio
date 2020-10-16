@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Conversation do
-  # coversaiton_modelが作成される
+  # coversaiton_modelは有効な状態であること
   it "is valid with a conversation model" do
-    conver = build(:conversation)
-    expect(conver).to be_invalid
+    conversation = build(:conversation)
+    expect(conversation).to be_invalid
   end
 end

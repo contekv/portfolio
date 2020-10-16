@@ -46,7 +46,7 @@ describe User do
     expect(user.errors[:password]).to include("を入力してください")
   end
 
-  # パスワードが６文字以上であれば登録できる
+  # パスワードが６文字以上であれば有効な状態であること
   it "is valid with a password 6 characters or more" do
     password = Faker::Internet.password(min_length: 6, max_length: 6)
     user = build(:user, password: password, password_confirmation: password)
