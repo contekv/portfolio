@@ -67,4 +67,16 @@ describe User do
     user.valid?
     expect(user.errors[:password_confirmation]).to include("とパスワードの入力が一致しません")
   end
+
+  describe '#create' do
+    before do
+      @user = build(:user)
+      @user.avatar = fixture_file_upload("icon.gif")
+    end
+
+    # imageが存在すれば登録できること
+    it 'is valid with an image' do
+      expect(@user).to be_valid
+    end
+  end
 end
